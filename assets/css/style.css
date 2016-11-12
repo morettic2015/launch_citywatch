@@ -1,0 +1,202 @@
+#map-page, #map-canvas { width: 300px; height: 240px; padding: 50px; }
+.leftImage{
+    position: absolute;
+    left: 50%;
+}
+#newsletterform {
+    font-family: 'Raleway', sans-serif;
+    margin: 0 auto;
+    max-width: 780px;
+    min-width: 320px;
+    display: block;
+    text-align: center;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+#newsletterform .wrap {
+    padding: 50px 40px;
+}
+
+#newsletterform h3 {
+    font-family: 'Raleway', sans-serif;
+    display: block;
+    font-size:26px;
+    font-weight:400;
+    line-height:1.2;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom:20px;
+    margin: 0 auto 30px auto;
+    border-bottom:1px solid #fff;
+    width:60%;
+}
+
+#newsletterform p {
+    font-size:14px;
+    line-height:26px;
+    margin-bottom:25px;
+
+}
+
+#newsletterform  {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight:500;
+    display: block;
+    width:100%;
+   
+    color:f1f1f1;
+   
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 auto 12px auto;
+    border:2px solid transparent;
+    outline:0;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#newsletterform input:focus {
+    border:2px solid #ddd;
+}
+/*
+#newsletterform input[type="submit"] {
+    background:#f77156;
+    color:#fff;
+    width:30%;
+    padding:13px;
+    cursor: pointer;
+    margin-bottom:0;
+    border:none;
+}
+
+#newsletterform input[type="submit"]:hover {
+    background:#F8CA4D;
+    color:#444;
+}
+*/
+.youtubeMaster{
+    min-width: 360px;
+    min-height: 270px;
+    border: 2px activeborder;
+    margin: 15px;
+}
+
+.ancoraHidden{
+    visibility: hidden;
+}
+
+.noSpace{
+    border: 0px;padding: 0px;margin: 0px;
+}
+.landindPage{
+    background-image: url('../images/bk_azuk.jpg');
+    width: 100%;
+    height:900px;
+}
+.landindPage1{
+    background-image: url('../images/bk1.png');
+    width: 100%;
+    height:100px;
+}
+.landindPageTurismo{
+     background-image: url('../images/turismo4.jpg');
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 120px;
+}
+.landindPageSaude{
+     background-image: url('../images/saude2.jpg');
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 120px;
+}
+.landindPageSeguranca{
+     background-image: url('../images/seguranca2.jpg');
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 120px;
+}
+.landindPageTransporte{
+     background-image: url('../images/transporte3.jpg');
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 120px;
+}
+.landindPageInfa{
+     background-image: url('../images/infraestrutura2.jpg');
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 120px;
+}
+.whiteOne{
+    color: white;
+}
+
+#newsletterform .arrow {
+    display: inline-block;
+    background: url("../images/arrow.png") no-repeat;
+    width: 139px;
+    height: 48px;
+    position: absolute;
+    left: 120px;
+    top: 290px;
+    z-index: 100;
+}
+
+#newsletterform #response {
+    color: #fff;
+    font-size: 1.4em;
+    height: 25px;
+    margin: 0 auto;
+    padding-top: 15px;
+    text-align: center;
+    width: 320px;
+}
+
+#newsletterform #response p {
+    margin: 0;
+    color: #fff;
+}
+
+#newsletterform .loading {
+    background: url("../images/loading.gif") no-repeat center 20px;
+}
+
+@media only screen and (max-width:769px) {
+
+    #newsletterform .wrap {
+        padding: 40px 25px;
+    }
+
+    #newsletterform .arrow {
+        display: none;
+    }
+
+    #newsletterform input {
+        width: 100%;
+        margin-bottom: 7px;
+    }
+
+    #newsletterform input[type="submit"] {
+        width: 100%;
+        padding: 16px;
+    }
+
+}
+
+@media only screen and (max-width:600px) {
+
+    #newsletterform h3 {
+        width: 100%;
+    }
+
+}
