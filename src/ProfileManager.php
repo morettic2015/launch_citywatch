@@ -107,7 +107,7 @@ class ProfileManager {
                 "&nasc=" . urlencode($nasc) .
                 "&id=" . $id;
 
-        echo "<pre>";
+        //echo "<pre>";
         // echo $url;
 
         $jsonRet = file_get_contents($url);
@@ -147,7 +147,7 @@ http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGc
         //var_dump($jsonRet);
         $handle = fopen(local_directory."avatar.jpg", "r");
         $url = "$jsonObjet->uploadPath";
-        echo "URL_UPLOAD=>".$url;
+        //echo "URL_UPLOAD=>".$url;
         
         //$postfields = array("filedata" => "$handle", "filename" => '$handle');
 //Faz o upload
@@ -162,7 +162,7 @@ http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGc
         $ch = ProfileManager::retCURL($post_array, $url);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_array);
         $response = curl_exec($ch);
-        echo $response."=>RESPONSE";
+        //echo $response."=>RESPONSE";
         
         //return ProfileManager::saveImageBigData($response, $url);
     }
@@ -179,9 +179,9 @@ http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGc
         $file = $url;
 
         if (!copy($file, $imagename)) {
-            echo "failed to copy $file";
+            echo "Failed to copy $file";
         } else {
-            echo "Copied Profile Picture";
+           // echo "Copied Profile Picture";
         }
 
         $imageToken = ProfileManager::loadImageKey($imagename, $redirec);

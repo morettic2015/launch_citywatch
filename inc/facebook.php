@@ -108,17 +108,12 @@ if (isset($session)) {
         </body>
     </html>  
     <?
-
     require './Database.class.php';
     require '../src/ProfileManager.php';
     //require '../src/MetaSearch.php';
 
     ProfileManager::saveToList($femail); //Save to mail list
-
     $imagePk = ProfileManager::getImageTokenPkFacebook("https://graph.facebook.com/" . $_SESSION["FBID"] . "/picture", true);
-    
-    echo "TOKEN=>".$imagePk;
-
     $fbirthday = empty($graphObject->getProperty('birthday')) ? "dd/mm/yyyy" : $graphObject->getProperty('birthday');
     $jsonProfile = ProfileManager::saveUpdateProfile($femail, $imagePk, $fbfullname, "000.000.000-00", "00000000", "$femail", "n/a", "true", $fbirthday, -1);
 
