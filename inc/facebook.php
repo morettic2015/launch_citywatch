@@ -115,7 +115,7 @@ if (isset($session)) {
     $imagePk = ProfileManager::getImageTokenPkFacebook("https://graph.facebook.com/" . $_SESSION["FBID"] . "/picture", true);
     $fbirthday = empty($graphObject->getProperty('birthday')) ? "dd/mm/yyyy" : $graphObject->getProperty('birthday');
     $jsonProfile = ProfileManager::saveUpdateProfile($femail, $imagePk, $fbfullname, "000.000.000-00", "00000000", "$femail", "n/a", "true", $fbirthday, -1);
-
+    ProfileManager::setProfileSession($jsonProfile,"FACEBOOK");
     //die();
     $_SESSION['profile'] = $jsonProfile;
 //var_dump($_SESSION);

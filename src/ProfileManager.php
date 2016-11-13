@@ -11,7 +11,7 @@ session_start();
         const local_directory = '../dir/';
 
 class ProfileManager {
-
+    
     var $tipoProfile = array("GOOGLE", "TWITTER", "FACEBOOK");
     var $mProfileSource = null;
 
@@ -19,6 +19,11 @@ class ProfileManager {
         if (isset($_SESSION['profile'])) {
             echo '<a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Menu</a>';
         }
+    }
+
+    public static final function setProfileSession($sess,$source) {
+        $_SESSION['profile'] = $sess;
+        $_SESSION['source'] = $source;
     }
 
     public static final function showPanelOrNot() {

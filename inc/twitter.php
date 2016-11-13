@@ -67,6 +67,7 @@ if (isset($_SESSION['profile'])) {
         );
         $userInfo = $connection->get('account/verify_credentials', ['include_email' => 'true']);
 
+        ProfileManager::setProfileSession($userInfo,"TWITTER");
         $_SESSION['profile'] = $userInfo;
 
         /* echo $userInfo->email;
