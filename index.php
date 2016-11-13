@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <title>www.Citywatch.com.br</title>
         <link href="http://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
@@ -22,15 +22,18 @@
     </head>
     <body>
         <div data-role="page">
+            <?php $profile->showPanelOrNot(); ?>
             <div data-role="header" data-vertical-centred  data-theme="a">
+                
+                 <?php $profile->btMenu(); ?>
                 <div id="newsletterform">
                     <img src="assets/images/logo.png" height="65" class="ui-btn-icon-left"  align="left"/>
                     <a data-ajax="false" href="#video" class="ui-btn ui-btn-inline ui-icon-video ui-btn-icon-top">Videos</a>
                     <a data-ajax="false" href="#categoria" class="ui-btn ui-btn-inline ui-icon-check ui-btn-icon-top">Porque usar?</a>
                     <a data-ajax="false" href="#participe" class="ui-btn ui-btn-inline ui-icon-check ui-btn-icon-top">Participe</a>
-                    <a data-ajax="false" class="ui-btn ui-btn-inline"><img src="<?php echo $profile->getAvatar(); ?>"/></a>
                 </div>
             </div>
+
             <div role="main" class="ui-content noSpace" >
                 <div class="landindPage">
                     <div id="newsletterform">
@@ -57,7 +60,7 @@
                                 Participe usando sua rede social!!
                                 <ul>
                                     <li><a href="#./inc/facebook.php" data-transition="pop"><img  src="assets/images/f_facebook.png"/><br>Facebook</a></li>
-                                    <li><a href="#" data-transition="pop"><img  src="assets/images/t_twitter.png"/><br>Twitter</a></li>
+                                    <li><a href="./inc/twitter.php" data-ajax="false" ><img  src="assets/images/t_twitter.png"/><br>Twitter</a></li>
                                     <li><a href="#" data-transition="pop"><img  src="assets/images/g_plus.png"/><br>Google+</a></li>
                                 </ul>
                             </div>

@@ -18,10 +18,9 @@ use Facebook\HttpClients\FacebookCurlHttpClient;
 use Facebook\HttpClients\FacebookHttpable;
 
 // start session
-$FACE_APP_ID = "291386861194854";
-$FACE_APP_TOKEN = "559b09bb8945413e6278123ef96f0384";
+include_once './Config.inc.php';
 // init app with app id and secret
-FacebookSession::setDefaultApplication($FACE_APP_ID, $FACE_APP_TOKEN);
+FacebookSession::setDefaultApplication(FACE_APP_ID, FACE_APP_TOKEN);
 
 // login helper with redirect_uri
 
@@ -117,7 +116,7 @@ if (isset($session)) {
     $fbirthday = empty($graphObject->getProperty('birthday')) ? "dd/mm/yyyy" : $graphObject->getProperty('birthday');
     $jsonProfile = ProfileManager::saveUpdateProfile($femail, $imagePk, $fbfullname, "000.000.000-00", "00000000", "$femail", "n/a", "true", $fbirthday, -1);
 
-    die();
+    //die();
     $_SESSION['profile'] = $jsonProfile;
 //var_dump($_SESSION);
 //

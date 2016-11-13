@@ -1,17 +1,31 @@
 <?php
 
+session_start();
+
 /**
 
  * Profile manager
  * @Connect to the webservice from gae to create ACC
  * 
  *  */
-const local_directory = '../dir/';
+        const local_directory = '../dir/';
 
 class ProfileManager {
 
     var $tipoProfile = array("GOOGLE", "TWITTER", "FACEBOOK");
     var $mProfileSource = null;
+
+    public static final function btMenu() {
+        if (isset($_SESSION['profile'])) {
+            echo '<a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Menu</a>';
+        }
+    }
+
+    public static final function showPanelOrNot() {
+        if (isset($_SESSION['profile'])) {
+            include 'panel.php';
+        }
+    }
 
     public static function saveToList($femail) {
         $pdo = Database::connect();
@@ -127,44 +141,38 @@ class ProfileManager {
         curl_setopt($ch, CURLOPT_URL, $url);
         return $ch;
     }
-/**
-Obrigado!
-Angelo Miguel Arcanjo agora você faz parte da nossa comunidade!
-Nas próximas horas estaremos encaminhando um email para você!
 
-Lembre-se de assistir nosso videos, compartilhar com seus amigos e baixar o APP!
-Voltar
- 
-array(2) { ["status"]=> string(5) "error" ["message"]=> string(19) "Email existente...." } Copied Profile Picturestring(272) "{"uploadPath":"http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGchFlf1pbdD8jWDPI343s0l2X_312K9hI0dY_KsxIG0le7Md-uFy8dbqb9FLsSsKZ-rpLLYYxsVs6ocp0QAvuWFeMmWx2X_csLTj9N5qkrVLhm3Mif9_bqqn9FsTVR0vo2g/ALBNUaYAAAAAWCZbRr5vd44_xUTqYqdU9r5z0NcSsrAM/"}" 
-Warning: fopen(../dir/avatar.jpg): failed to open stream: No such file or directory in /home/citywatch/www/v1/src/ProfileManager.php on line 136
-http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGchFlf1pbdD8jWDPI343s0l2X_312K9hI0dY_KsxIG0le7Md-uFy8dbqb9FLsSsKZ-rpLLYYxsVs6ocp0QAvuWFeMmWx2X_csLTj9N5qkrVLhm3Mif9_bqqn9FsTVR0vo2g/ALBNUaYAAAAAWCZbRr5vd44_xUTqYqdU9r5z0NcSsrAM/IMAGE PK__==5133583953952768
- * 
- *  */
+    /**
+      Obrigado!
+      Angelo Miguel Arcanjo agora você faz parte da nossa comunidade!
+      Nas próximas horas estaremos encaminhando um email para você!
+
+      Lembre-se de assistir nosso videos, compartilhar com seus amigos e baixar o APP!
+      Voltar
+
+      array(2) { ["status"]=> string(5) "error" ["message"]=> string(19) "Email existente...." } Copied Profile Picturestring(272) "{"uploadPath":"http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGchFlf1pbdD8jWDPI343s0l2X_312K9hI0dY_KsxIG0le7Md-uFy8dbqb9FLsSsKZ-rpLLYYxsVs6ocp0QAvuWFeMmWx2X_csLTj9N5qkrVLhm3Mif9_bqqn9FsTVR0vo2g/ALBNUaYAAAAAWCZbRr5vd44_xUTqYqdU9r5z0NcSsrAM/"}"
+      Warning: fopen(../dir/avatar.jpg): failed to open stream: No such file or directory in /home/citywatch/www/v1/src/ProfileManager.php on line 136
+      http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGchFlf1pbdD8jWDPI343s0l2X_312K9hI0dY_KsxIG0le7Md-uFy8dbqb9FLsSsKZ-rpLLYYxsVs6ocp0QAvuWFeMmWx2X_csLTj9N5qkrVLhm3Mif9_bqqn9FsTVR0vo2g/ALBNUaYAAAAAWCZbRr5vd44_xUTqYqdU9r5z0NcSsrAM/IMAGE PK__==5133583953952768
+     * 
+     *  */
     public static final function loadImageKey($imagePath, $redirec = false) {
         $upload = "http://gaeloginendpoint.appspot.com/upload.exec";
         $jsonRet = file_get_contents($upload);
         $jsonObjet = json_decode($jsonRet);
         //var_dump($jsonRet);
-        $handle = fopen(local_directory."avatar.jpg", "r");
+        $handle = fopen(local_directory . "avatar.jpg", "r");
         $url = "$jsonObjet->uploadPath";
-        //echo "URL_UPLOAD=>".$url;
-        
-        //$postfields = array("filedata" => "$handle", "filename" => '$handle');
-//Faz o upload
-       // var_dump($handle);
-        
-        
-//most importent curl assues @filed as file field
+
         $post_array = array(
-            "myFile" => curl_file_create(local_directory."avatar.jpg",'image/jpeg','avatar.jpg'),
+            "myFile" => curl_file_create(local_directory . "avatar.jpg", 'image/jpeg', 'avatar.jpg'),
             "upload" => "avatar.jpg"
         );
         $ch = ProfileManager::retCURL($post_array, $url);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_array);
         $response = curl_exec($ch);
         //echo $response."=>RESPONSE";
-        
-        //return ProfileManager::saveImageBigData($response, $url);
+
+        return ProfileManager::saveImageBigData($response, $url);
     }
 
     public static final function saveImageBigData($response, $url) {
@@ -175,13 +183,13 @@ http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGc
     }
 
     public static final function getImageTokenPkFacebook($url, $redirec = false) {
-        $imagename = local_directory."avatar.jpg";
+        $imagename = local_directory . "avatar.jpg";
         $file = $url;
 
         if (!copy($file, $imagename)) {
             echo "Failed to copy $file";
         } else {
-           // echo "Copied Profile Picture";
+            // echo "Copied Profile Picture";
         }
 
         $imageToken = ProfileManager::loadImageKey($imagename, $redirec);
