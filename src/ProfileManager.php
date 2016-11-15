@@ -1,6 +1,5 @@
 <?php
-
-session_start();
+@session_start();
 
 /**
 
@@ -11,17 +10,56 @@ session_start();
         const local_directory = '../dir/';
 
 class ProfileManager {
-    
+
     var $tipoProfile = array("GOOGLE", "TWITTER", "FACEBOOK");
     var $mProfileSource = null;
+    
+     public static final function getEmail(){
+         //echo "<pre>";
+         //var_dump($_SESSION);
+        //echo $_SESSION['source'];
+        if($_SESSION['source']=="GOOGLE"){
+            echo $_SESSION['google_data']['email'];
+        }else if(isset($_SESSION['EMAIL'])){
+            echo $_SESSION['EMAIL'];
+        }else{
+            echo $_SESSION['profile']->email;
+        }
+    }
+    
+    public static final function getName(){
+        //echo $_SESSION['source'];
+        if($_SESSION['source']=="GOOGLE"){
+            echo $_SESSION['google_data']['name'];
+        }else if(isset($_SESSION['EMAIL'])){
+            echo $_SESSION['FULLNAME'];
+        }else{
+            echo $_SESSION['profile']->name;
+        }
+    }
+    
+    public static final function getAvatar(){
+        //echo $_SESSION['source'];
+        if($_SESSION['source']=="GOOGLE"){
+            echo $_SESSION['google_data']['picture'];
+        }else if(isset($_SESSION['EMAIL'])){
+            echo "https://graph.facebook.com/" . $_SESSION["FBID"] . "/picture";
+        }else{
+            echo $_SESSION['profile']->profile_image_url;
+        }
+    }
+    public static final function navigate($url){
+        $pg = empty($url)?"main":$url;
+        include_once './inc/'.$pg.".php";
+    }
 
     public static final function btMenu() {
         if (isset($_SESSION['profile'])) {
-            echo '<a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Menu</a>';
+            echo '<a href="#myPanel" data-role="button" class="ui-btn ui-btn-inline ui-corner-all ui-shadow"  data-icon="arrow-d">Menu</a>';
         }
     }
 
-    public static final function setProfileSession($sess,$source) {
+    public static final function setProfileSession($sess, $source) {
         $_SESSION['profile'] = $sess;
         $_SESSION['source'] = $source;
     }
@@ -75,11 +113,7 @@ class ProfileManager {
         }
     }
 
-    function getAvatar() {
-        if ($this->mProfileSource == $this->tipoProfile[2]) {
-            return "https://graph.facebook.com/" . $_SESSION["FBID"] . "/picture";
-        }
-    }
+   
 
     function getUrlPath($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId) {
         return $url = "https://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=1&" .
@@ -200,6 +234,40 @@ class ProfileManager {
         $imageToken = ProfileManager::loadImageKey($imagename, $redirec);
         //Token
         return $imageToken;
+    }
+
+    public static final function getImageTokenPkGoogle($url, $redirec = false) {
+        $imagename = "../".local_directory . "avatar.jpg";
+        $file = $url;
+
+        if (!copy($file, $imagename)) {
+            echo "Failed to copy $file";
+        } else {
+            // echo "Copied Profile Picture";
+        }
+
+        $imageToken = ProfileManager::loadImageKeyG($imagename, $redirec);
+        //Token
+        return $imageToken;
+    }
+    public static final function loadImageKeyG($imagePath, $redirec = false) {
+        $upload = "http://gaeloginendpoint.appspot.com/upload.exec";
+        $jsonRet = "../".file_get_contents($upload);
+        $jsonObjet = json_decode($jsonRet);
+        //var_dump($jsonRet);
+        $handle = fopen("../".local_directory . "avatar.jpg", "r");
+        $url = "$jsonObjet->uploadPath";
+
+        $post_array = array(
+            "myFile" => curl_file_create("../".local_directory . "avatar.jpg", 'image/jpeg', 'avatar.jpg'),
+            "upload" => "avatar.jpg"
+        );
+        $ch = ProfileManager::retCURL($post_array, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_array);
+        $response = curl_exec($ch);
+        //echo $response."=>RESPONSE";
+
+        return ProfileManager::saveImageBigData($response, $url);
     }
 
 }

@@ -14,4 +14,12 @@
 
         const FACE_APP_ID = "291386861194854";
         const FACE_APP_TOKEN = "559b09bb8945413e6278123ef96f0384";
+
+/**
+ * @ Google config keys
+ */
+        const clientId = '811880962924-pfh922tqssdmckdgn7ahat1s2qvq1qdg.apps.googleusercontent.com'; //Google CLIENT ID
+        const clientSecret = 'LHk9sYNz3oC03zZnh1k-3h5W'; //Google CLIENT dex.phpSECRET
+        const redirectUrl = 'http://citywatch.com.br/v1/src/google/index.php';  //return url (url to script)
+        const homeUrl = 'http://citywatch.com.br/v1/src/google/index.php';  //return to home
 ?>
