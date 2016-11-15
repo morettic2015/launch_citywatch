@@ -7,7 +7,7 @@
     <div data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="d" data-content-theme="d">
         <h3>Opções</h3>
         <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-theme="d" data-content-theme="d">
-            <div data-role="collapsible">
+            <div data-role="collapsible" data-content-theme="b">
                 <h3>Experiências</h3>
                 <ul data-role="listview">
                     <li><a href="#">Pesquisar</a></li>
@@ -15,7 +15,7 @@
                 </ul>
             </div><!-- /collapsible -->
 
-            <div data-role="collapsible">
+            <div data-role="collapsible" data-content-theme="b">
                 <h3>Promoções</h3>
                 <ul data-role="listview">
                     <li><a href="#">Visualizar</a></li>
@@ -24,7 +24,7 @@
                     <li><a href="#">Estatísticas</a></li>
                 </ul>
             </div><!-- /collapsible -->
-             <div data-role="collapsible">
+             <div data-role="collapsible" data-content-theme="b">
                 <h3>Favoritos</h3>
                 <ul data-role="listview">
                     <li><a href="#">Meus favoritos</a></li>
@@ -32,14 +32,14 @@
                     <li><a href="#">Recomendações</a></li>
                 </ul>
             </div><!-- /collapsible -->
-            <div data-role="collapsible">
+            <div data-role="collapsible" data-content-theme="b">
                 <h3>Mensagens</h3>
                 <ul data-role="listview">
                     <li><a href="#">Caixa de entrada</a></li>
                     <li><a href="#">Contatos</a></li>
                 </ul>
             </div><!-- /collapsible -->
-            <div data-role="collapsible">
+            <div data-role="collapsible" data-content-theme="b">
                 <h3>Minha conta</h3>
                 <ul data-role="listview">
                     <li><a href="#">Dados pessoais</a></li>
