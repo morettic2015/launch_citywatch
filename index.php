@@ -11,8 +11,7 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.icons-1.4.2.css" />
         <link rel="stylesheet" href="http://andymatthews.net/code/jquery-mobile-icon-pack/dist/jqm-icon-pack-fa.css"/>
         <link rel="stylesheet" href="assets/css/style.css">
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="assets/js/lib.js"></script>
+  
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <?php
@@ -48,6 +47,10 @@
 
                             <img class="wrap" src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" width="108" height="32" border="0">
                         </a> 
+                        <br>
+                        <a href="http://genimo.com.br" target="_blank">
+                           GENIMO
+                        </a>
                     </div>
                     <br>
                 </div>

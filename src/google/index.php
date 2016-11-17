@@ -141,7 +141,7 @@ if ($gClient->getAccessToken()) {
                     <div data-role="navbar">
                         <ul>
                             <li>
-                                <a href="../">Voltar</a>
+                                <a href="../../">Voltar</a>
                             </li>
                         </ul>
                     </div>

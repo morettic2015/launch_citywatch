@@ -19,6 +19,8 @@
             </form>
             <div id="response"></div>
             <p>
+                <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+                <script src="assets/js/lib.js"></script>
             <div data-role="navbar" class="whiteOne" style="width:50%">
                 Participe usando sua rede social!!
                 <ul>
@@ -35,7 +37,7 @@
     <a name="video" class="ancoraHidden"  data-ajax="false"> </a>
     <h2>Videos</h2>
     <h3>Assista aos nossos videos e veja porque baixar o APP, compartilhar e participar!</h3>
-    <iframe class="youtubeMaster" src="https://www.youtube.com/embed/jF4yUgUNoQU" frameborder="0" allowfullscreen></iframe>
+    <iframe class="youtubeMaster" src="https://www.youtube.com/embed/0T5dG04W5pU" frameborder="0" allowfullscreen></iframe>
     <div data-role="navbar">
         <ul>
             <li><a href="faq.html" class="ui-shadow ui-btn ui-corner-all ui-btn-inline" data-transition="pop"><img src="assets/images/video_01.png"/><br>O que é o citywatch (problema)<br>d/m/y</a></li>
@@ -70,15 +72,16 @@
         </ul>
         <ul>
             <li><a href="#./inc/infra.html" data-transition="pop"><img  src="assets/images/infraestrutura.png"/><br>Infraestrutura</a></li>
-            <li><a href="#" data-transition="pop"><img  src="assets/images/meio_ambiente_2.png"/><br>Meio ambiente</a></li>
-            <li><a href="#" data-transition="pop"><img  src="assets/images/compras.png"/><br>Shop</a></li>
-            <li><a href="#" data-transition="pop"><img  src="assets/images/cultura.png"/><br>Cultura</a></li>
+            <li><a href="#./inc/meio_ambiente.html" data-transition="pop"><img  src="assets/images/meio_ambiente_2.png"/><br>Meio ambiente</a></li>
+            <li><a href="#./inc/shopping.html" data-transition="pop"><img  src="assets/images/compras.png"/><br>Shop</a></li>
+            <li><a href="#./inc/cultura.html" data-transition="pop"><img  src="assets/images/cultura.png"/><br>Cultura</a></li>
+            <li><a href="#./inc/cervejas.html" data-transition="pop"><img  src="assets/images/ipa.png"/><br>Cervejas</a></li>
         </ul>
         <ul>
-            <li><a href="#" data-transition="pop"><img  src="assets/images/educacao.png"/><br>Educaçao</a></li>
-            <li><a href="#" data-transition="pop"><img  src="assets/images/esportes.png"/><br>Esportes</a></li>
-            <li><a href="#" data-transition="pop"><img  src="assets/images/alimentacao.png"/><br>Alimentação</a></li>
-            <li><a href="#" data-transition="pop"><img  src="assets/images/imoveis.png"/><br>Imóveis</a></li>
+            <li><a href="#./inc/educacao.html" data-transition="pop"><img  src="assets/images/educacao.png"/><br>Educaçao</a></li>
+            <li><a href="#./inc/esportes.html" data-transition="pop"><img  src="assets/images/esportes.png"/><br>Esportes</a></li>
+            <li><a href="#./inc/alimentacao.html" data-transition="pop"><img  src="assets/images/alimentacao.png"/><br>Alimentação</a></li>
+            <li><a href="#./inc/imoveis.html" data-transition="pop"><img  src="assets/images/imoveis.png"/><br>Imóveis</a></li>
         </ul>
     </div>
 
