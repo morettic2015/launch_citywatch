@@ -1,4 +1,5 @@
+<h1>Fechando sua sessão....</h1>
 <?php 
 session_destroy();
-include './inc/main.php';
+die("<script>location.href = 'https://www.citywatch.com.br/v1/'</script>");
 ?>
