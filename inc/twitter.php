@@ -6,6 +6,9 @@ require "../autoload.php";
 //Define apo
 use Abraham\TwitterOAuth\TwitterOAuth;
 
+require './Database.class.php';
+require '../src/ProfileManager.php';
+//require '../src/MetaSearch.php';
 //COnfig app Keys
 include_once './Config.inc.php';
 $userInfo = new stdClass();
@@ -67,15 +70,13 @@ if (isset($_SESSION['profile'])) {
         );
         $userInfo = $connection->get('account/verify_credentials', ['include_email' => 'true']);
 
-        ProfileManager::setProfileSession($userInfo,"TWITTER");
-        $_SESSION['profile'] = $userInfo;
+        ProfileManager::setProfileSession($userInfo, "TWITTER");
+        $_SESSION['profile_twitter'] = $userInfo;
 
         /* echo $userInfo->email;
           echo $userInfo->profile_image_url; */
 
-        require './Database.class.php';
-        require '../src/ProfileManager.php';
-        //require '../src/MetaSearch.php';
+
 
         $femail = $userInfo->email;
         $fbfullname = $userInfo->name;
@@ -88,6 +89,9 @@ if (isset($_SESSION['profile'])) {
         //$fbirthday = empty($graphObject->getProperty('birthday')) ? "dd/mm/yyyy" : $graphObject->getProperty('birthday');
         $jsonProfile = ProfileManager::saveUpdateProfile($femail, $imagePk, $fbfullname, "000.000.000-00", "00000000", "$femail", "n/a", "true", "dd/mm/yyyy", -1);
         //header('Location: ./twitter.php');
+        ProfileManager::setProfileSession($jsonProfile, "TWITTER");
+        //die();
+        $_SESSION['profile'] = $jsonProfile;
     }
 }
 ?>

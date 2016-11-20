@@ -1,4 +1,5 @@
 <?php
+
 @session_start();
 
 /**
@@ -13,44 +14,59 @@ class ProfileManager {
 
     var $tipoProfile = array("GOOGLE", "TWITTER", "FACEBOOK");
     var $mProfileSource = null;
-    
-     public static final function getEmail(){
-         //echo "<pre>";
-         //var_dump($_SESSION);
+
+    public static final function getEmail() {
+        //echo "<pre>";
+        //var_dump($_SESSION);
         //echo $_SESSION['source'];
-        if($_SESSION['source']=="GOOGLE"){
+        if ($_SESSION['source'] == "GOOGLE") {
             echo $_SESSION['google_data']['email'];
-        }else if(isset($_SESSION['EMAIL'])){
+        } else if (isset($_SESSION['EMAIL'])) {
             echo $_SESSION['EMAIL'];
-        }else{
-            echo $_SESSION['profile']->email;
+        } else {
+            echo $_SESSION['profile_twitter']->email;
         }
     }
-    
-    public static final function getName(){
+
+    public static final function getName() {
         //echo $_SESSION['source'];
-        if($_SESSION['source']=="GOOGLE"){
+        if ($_SESSION['source'] == "GOOGLE") {
             echo $_SESSION['google_data']['name'];
-        }else if(isset($_SESSION['EMAIL'])){
+        } else if (isset($_SESSION['EMAIL'])) {
             echo $_SESSION['FULLNAME'];
-        }else{
-            echo $_SESSION['profile']->name;
+        } else {
+            echo $_SESSION['profile_twitter']->name;
         }
     }
-    
-    public static final function getAvatar(){
+
+    public static final function loadPromotions($myId) {
+        $url = 'http://capsule-corp-07-dot-gaeloginendpoint.appspot.com/infosegcontroller.exec?action=25';
+        if (!empty($myId)) {
+            $url.="&idProfile=" . $myId;
+        }
+
+        $jsonRet = file_get_contents($url);
+        $jsonObjet = json_decode($jsonRet);
+
+
+
+        return $jsonObjet;
+    }
+
+    public static final function getAvatar() {
         //echo $_SESSION['source'];
-        if($_SESSION['source']=="GOOGLE"){
+        if ($_SESSION['source'] == "GOOGLE") {
             echo $_SESSION['google_data']['picture'];
-        }else if(isset($_SESSION['EMAIL'])){
+        } else if (isset($_SESSION['EMAIL'])) {
             echo "https://graph.facebook.com/" . $_SESSION["FBID"] . "/picture";
-        }else{
-            echo $_SESSION['profile']->profile_image_url;
+        } else {
+            echo $_SESSION['profile_twitter']->profile_image_url;
         }
     }
-    public static final function navigate($url){
-        $pg = empty($url)?"main":$url;
-        include_once './inc/'.$pg.".php";
+
+    public static final function navigate($url) {
+        $pg = empty($url) ? "main" : $url;
+        include_once './inc/' . $pg . ".php";
     }
 
     public static final function btMenu() {
@@ -113,8 +129,6 @@ class ProfileManager {
         }
     }
 
-   
-
     function getUrlPath($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId) {
         return $url = "https://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=1&" .
                 "titulo=" . urlencode($titulo) .
@@ -146,8 +160,21 @@ class ProfileManager {
         curl_close($process);
         return $return;
     }
+    /**
+        @Perfil existe na base de dados;
+     *      */
+    public static function existProfile($email){
+        $url="http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=11&email=".$email;
+         $jsonRet = file_get_contents($url);
+
+        // var_dump($jsonRet);
+        $tot = json_decode($jsonRet);
+        
+        return $tot->total=="1"?true:false;
+    }
 
     public static function saveUpdateProfile($email, $avatar, $nome, $cpfCnpj, $cep, $passwd, $complemento, $pjf, $nasc, $id) {
+        
         $url = "https://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=3&" .
                 "email=" . $email .
                 "&avatar=" . $avatar .
@@ -221,6 +248,40 @@ class ProfileManager {
         return $jsonObjet->key;
     }
 
+    public static final function getImageFromToken($token) {
+        $path = "";
+        if($token=="SEGURANCA"){
+            $path = "assets/images/seguranca.png";
+        } else if($token=="SAUDE"){
+            $path = "assets/images/saude.png";
+        }else if($token=="TURISMO"){
+            $path = "assets/images/turismo.png";
+        }else if($token=="TRANSPORTE"){
+            $path = "assets/images/transporte.png";
+        }else if($token=="INFRAESTRUTURA"){
+            $path = "assets/images/infraestrutura.png";
+        }else if($token=="MEIO_AMBIENTE"){
+            $path = "assets/images/meio_ambiente_2.png";
+        }else if($token=="SHOP"){
+            $path = "assets/images/compras.png";
+        }else if($token=="CULTURA"){
+            $path = "assets/images/cultura.png";
+        }else if($token=="BEER"){
+            $path = "assets/images/ipa.png";
+        }else if($token=="EDUCACAO"){
+            $path = "assets/images/educacao.png";
+        }else if($token=="ESPORTE"){
+            $path = "assets/images/esportes.png";
+        }else if($token=="ALIMENTACAO"){
+            $path = "assets/images/alimentacao.png";
+        }else if($token=="IMOVEIS"){
+            $path = "assets/images/imoveis.png";
+        }
+        $img = "<img src=" . $path . ">";
+
+        echo $img;
+    }
+
     public static final function getImageTokenPkFacebook($url, $redirec = false) {
         $imagename = local_directory . "avatar.jpg";
         $file = $url;
@@ -237,7 +298,7 @@ class ProfileManager {
     }
 
     public static final function getImageTokenPkGoogle($url, $redirec = false) {
-        $imagename = "../".local_directory . "avatar.jpg";
+        $imagename = "../" . local_directory . "avatar.jpg";
         $file = $url;
 
         if (!copy($file, $imagename)) {
@@ -250,16 +311,17 @@ class ProfileManager {
         //Token
         return $imageToken;
     }
+
     public static final function loadImageKeyG($imagePath, $redirec = false) {
         $upload = "http://gaeloginendpoint.appspot.com/upload.exec";
-        $jsonRet = "../".file_get_contents($upload);
+        $jsonRet = "../" . file_get_contents($upload);
         $jsonObjet = json_decode($jsonRet);
         //var_dump($jsonRet);
-        $handle = fopen("../".local_directory . "avatar.jpg", "r");
+        $handle = fopen("../" . local_directory . "avatar.jpg", "r");
         $url = "$jsonObjet->uploadPath";
 
         $post_array = array(
-            "myFile" => curl_file_create("../".local_directory . "avatar.jpg", 'image/jpeg', 'avatar.jpg'),
+            "myFile" => curl_file_create("../" . local_directory . "avatar.jpg", 'image/jpeg', 'avatar.jpg'),
             "upload" => "avatar.jpg"
         );
         $ch = ProfileManager::retCURL($post_array, $url);

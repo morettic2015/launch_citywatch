@@ -195,6 +195,8 @@
 }
 .whiteOne{
     color: white;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(150, 150, 150) 1px 3px 0px, rgb(171, 168, 168) 1px 13px 5px;
 }
 
 #newsletterform .arrow {

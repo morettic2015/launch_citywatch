@@ -10,7 +10,7 @@
                     <div data-role="collapsible" data-content-theme="b">
                         <h3>Experiências</h3>
                         <ul data-role="listview">
-                            <li><a href="#">Pesquisar</a></li>
+                            <li><a href="#./inc/filter.html" data-transition="pop">Pesquisar</a></li>
                             <li><a href="#">Adicionar</a></li>
                             <li><a href="#">Favoritos</a></li>
                             <li><a href="#">Top 50</a></li>
@@ -22,7 +22,7 @@
                     <div data-role="collapsible" data-content-theme="b">
                         <h3>Promoções</h3>
                         <ul data-role="listview">
-                            <li><a href="#">Visualizar</a></li>
+                            <li><a href="index.php?p=promocoes">Visualizar</a></li>
                             <li><a href="#">Enviar</a></li>
                             <li><a href="#">Leads</a></li>
                             <li><a href="#">Estatísticas</a></li>
@@ -61,6 +61,12 @@
                         <h3>Ajuda</h3>
                         <ul data-role="listview">
                             <li><a href="#">Android</a></li>
+                        </ul>
+                    </div><!-- /collapsible -->
+                     <div data-role="collapsible" data-content-theme="b">
+                        <h3>Sair</h3>
+                        <ul data-role="listview">
+                            <li><a href="index.php?p=logout">Fechar sessão</a></li>
                         </ul>
                     </div><!-- /collapsible -->
                 </div><!-- /collapsible-set -->

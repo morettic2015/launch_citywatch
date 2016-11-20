@@ -5,15 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>www.Citywatch.com.br</title>
-        <link href="http://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.icons-1.4.2.css" />
-        <link rel="stylesheet" href="http://andymatthews.net/code/jquery-mobile-icon-pack/dist/jqm-icon-pack-fa.css"/>
-        <link rel="stylesheet" href="assets/css/style.css">
-  
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.2/jquery.mobile.icons-1.4.2.css" />
+        <link rel="stylesheet" href="https://andymatthews.net/code/jquery-mobile-icon-pack/dist/jqm-icon-pack-fa.css"/>
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCkJEjT73RmsOw1Ldy3S9RbWg_-PDRh8zE"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <?php
         include_once './src/ProfileManager.php';
 
@@ -39,20 +39,11 @@
             </div><!-- /content -->
             <div data-role="footer">
                 <div id="newsletterform">
-                    <br>
-
-                    <div align="center">
-                        Powered by:<br>
-                        <a href="http://morettic.com.br" target="_blank">
-
+                    <center>Powered by:<br></center>
+                        <a data-ajax="false" href="http://morettic.com.br" target="_blank" class="ui-btn-inline">
                             <img class="wrap" src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" width="108" height="32" border="0">
-                        </a> 
-                        <br>
-                        <a href="http://genimo.com.br" target="_blank">
-                           GENIMO
                         </a>
-                    </div>
-                    <br>
+                        <a href="http://genimo.com.br" target="_blank" href="index.php#categoria" class="ui-btn-inline">GENIMO</a>
                 </div>
             </div>
             <!-- /footer -->

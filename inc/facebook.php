@@ -110,7 +110,6 @@ if (isset($session)) {
     require './Database.class.php';
     require '../src/ProfileManager.php';
     //require '../src/MetaSearch.php';
-
     ProfileManager::saveToList($femail); //Save to mail list
     $imagePk = ProfileManager::getImageTokenPkFacebook("https://graph.facebook.com/" . $_SESSION["FBID"] . "/picture", true);
     $fbirthday = empty($graphObject->getProperty('birthday')) ? "dd/mm/yyyy" : $graphObject->getProperty('birthday');

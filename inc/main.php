@@ -4,9 +4,18 @@
             <h1  class="whiteOne">Pré-lançamento!</h1>
             <i>
                 <h4  class="whiteOne"> CITY WATCH É UM GUIA VIRTUAL PARA O COMPARTILHAMENTO DE SUAS EXPERIÊNCIAS PELAS CIDADES! </h4>
-                <h5  class="whiteOne">
-                    <i>"Saúde, Educação, Transporte, Turismo, Meio Ambiente, Infraestrutura, Política, Segurança, Shopping, Cultura, Educação, Esportes, Alimentação, Imóveis, Cervejas e muito mais!"</i> 
-                </h5>
+                <div data-role="navbar" class="whiteOne" style="width: 60%">
+                    Participe usando sua rede social!!
+                    <ul>
+                        <li><img  src="assets/images/esquema_mobile.png"/></li>
+                        <li>
+                            <h4  class="whiteOne" style="font-size: 17px;margin-left: 8px;">
+                                <i>"Saúde, Educação, Transporte, Turismo, Meio Ambiente, Infraestrutura, Segurança, Shopping, Cultura, Esportes, Alimentação, Imóveis, Cervejas e muito mais!"</i> 
+                            </h4>
+                        </li>
+                    </ul>
+                </div>
+
             </i>
             <a name="participe" class="ancoraHidden" data-ajax="false"></a>
             <h2 class="whiteOne">Participe!</h2>
@@ -54,7 +63,7 @@
         </h1>
         <h3>Compartilhando experiências na cidade!</h3>
         <p>
-            Utilize sua rede social preferida e conecte-se conosco.<br>Crie sua conta e veja o que está acontecendo no mapa perto de você!<br>Registre suas experiências e participe!
+            Utilize sua rede social e conecte-se conosco!<br>Crie sua conta e veja o que está acontecendo no mapa perto de você!<br>Registre suas experiências e participe!
         </p>
         <img src="assets/images/slider_c.png"/>
         <h1>
