@@ -14,6 +14,52 @@ class ProfileManager {
 
     var $tipoProfile = array("GOOGLE", "TWITTER", "FACEBOOK");
     var $mProfileSource = null;
+    
+    public static final function getImagePathFromId($id){
+        return "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=8&id=".$id;
+    }
+    
+    public static final function getGeoLocationsFromProfile($city, $type, $distance, $lat, $lon, $id) {
+        $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=6&id=$id&lat=$lat&lon=$lon&d=$distance&type=$type&myCity=" . ProfileManager::stripAcentos($city);
+        $jsonRet = file_get_contents($url);
+
+        // var_dump($jsonRet);
+        return json_decode($jsonRet);
+    }
+
+    public static final function stripAcentos($r) {
+        return preg_replace(array("/(á|à|ã|â|ä)/", "/(Á|À|Ã|Â|Ä)/", "/(é|è|ê|ë)/", "/(É|È|Ê|Ë)/", "/(í|ì|î|ï)/", "/(Í|Ì|Î|Ï)/", "/(ó|ò|õ|ô|ö)/", "/(Ó|Ò|Õ|Ô|Ö)/", "/(ú|ù|û|ü)/", "/(Ú|Ù|Û|Ü)/", "/(ñ)/", "/(Ñ)/"), explode(" ", "a A e E i I o O u U n N"), $r);
+    }
+
+    public static final function getJsonFromLatLon() {
+
+
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if (getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if (getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if (getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if (getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if (getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+        $ipaddress;
+
+
+        $url = "http://ip-api.com/json/$ipaddress";
+        $jsonRet = file_get_contents($url);
+        $jsonObjet = json_decode($jsonRet);
+
+
+
+        return $jsonObjet;
+    }
 
     public static final function getEmail() {
         //echo "<pre>";
@@ -40,7 +86,7 @@ class ProfileManager {
     }
 
     public static final function loadPromotions($myId) {
-        $url = 'http://capsule-corp-07-dot-gaeloginendpoint.appspot.com/infosegcontroller.exec?action=25';
+        $url = 'http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=25';
         if (!empty($myId)) {
             $url.="&idProfile=" . $myId;
         }
@@ -160,21 +206,22 @@ class ProfileManager {
         curl_close($process);
         return $return;
     }
+
     /**
-        @Perfil existe na base de dados;
+      @Perfil existe na base de dados;
      *      */
-    public static function existProfile($email){
-        $url="http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=11&email=".$email;
-         $jsonRet = file_get_contents($url);
+    public static function existProfile($email) {
+        $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=11&email=" . $email;
+        $jsonRet = file_get_contents($url);
 
         // var_dump($jsonRet);
         $tot = json_decode($jsonRet);
-        
-        return $tot->total=="1"?true:false;
+
+        return $tot->total == "1" ? true : false;
     }
 
     public static function saveUpdateProfile($email, $avatar, $nome, $cpfCnpj, $cep, $passwd, $complemento, $pjf, $nasc, $id) {
-        
+
         $url = "https://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=3&" .
                 "email=" . $email .
                 "&avatar=" . $avatar .
@@ -250,31 +297,31 @@ class ProfileManager {
 
     public static final function getImageFromToken($token) {
         $path = "";
-        if($token=="SEGURANCA"){
+        if ($token == "SEGURANCA") {
             $path = "assets/images/seguranca.png";
-        } else if($token=="SAUDE"){
+        } else if ($token == "SAUDE") {
             $path = "assets/images/saude.png";
-        }else if($token=="TURISMO"){
+        } else if ($token == "TURISMO") {
             $path = "assets/images/turismo.png";
-        }else if($token=="TRANSPORTE"){
+        } else if ($token == "TRANSPORTE") {
             $path = "assets/images/transporte.png";
-        }else if($token=="INFRAESTRUTURA"){
+        } else if ($token == "INFRAESTRUTURA") {
             $path = "assets/images/infraestrutura.png";
-        }else if($token=="MEIO_AMBIENTE"){
+        } else if ($token == "MEIO_AMBIENTE") {
             $path = "assets/images/meio_ambiente_2.png";
-        }else if($token=="SHOP"){
+        } else if ($token == "SHOP") {
             $path = "assets/images/compras.png";
-        }else if($token=="CULTURA"){
+        } else if ($token == "CULTURA") {
             $path = "assets/images/cultura.png";
-        }else if($token=="BEER"){
+        } else if ($token == "BEER") {
             $path = "assets/images/ipa.png";
-        }else if($token=="EDUCACAO"){
+        } else if ($token == "EDUCACAO") {
             $path = "assets/images/educacao.png";
-        }else if($token=="ESPORTE"){
+        } else if ($token == "ESPORTE") {
             $path = "assets/images/esportes.png";
-        }else if($token=="ALIMENTACAO"){
+        } else if ($token == "ALIMENTACAO") {
             $path = "assets/images/alimentacao.png";
-        }else if($token=="IMOVEIS"){
+        } else if ($token == "IMOVEIS") {
             $path = "assets/images/imoveis.png";
         }
         $img = "<img src=" . $path . ">";
@@ -282,6 +329,39 @@ class ProfileManager {
         echo $img;
     }
 
+    public static final function getImagePathFromToken($token) {
+        $path = "";
+        if ($token == "SEGURANCA") {
+            $path = "./assets/images/seguranca.png";
+        } else if ($token == "SAUDE") {
+            $path = "./assets/images/saude.png";
+        } else if ($token == "TURISMO") {
+            $path = "./assets/images/turismo.png";
+        } else if ($token == "TRANSPORTE") {
+            $path = "./assets/images/transporte.png";
+        } else if ($token == "INFRAESTRUTURA") {
+            $path = "./assets/images/infraestrutura.png";
+        } else if ($token == "MEIO_AMBIENTE") {
+            $path = "./assets/images/meio_ambiente_2.png";
+        } else if ($token == "SHOP") {
+            $path = "./assets/images/compras.png";
+        } else if ($token == "CULTURA") {
+            $path = "./assets/images/cultura.png";
+        } else if ($token == "BEER") {
+            $path = "./assets/images/ipa.png";
+        } else if ($token == "EDUCACAO") {
+            $path = "./assets/images/educacao.png";
+        } else if ($token == "ESPORTE") {
+            $path = "./assets/images/esportes.png";
+        } else if ($token == "ALIMENTACAO") {
+            $path = "./assets/images/alimentacao.png";
+        } else if ($token == "IMOVEIS") {
+            $path = "./assets/images/imoveis.png";
+        }
+       
+
+        echo $path;
+    }
     public static final function getImageTokenPkFacebook($url, $redirec = false) {
         $imagename = local_directory . "avatar.jpg";
         $file = $url;
