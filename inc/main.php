@@ -1,7 +1,8 @@
+
 <div class="landindPage">
     <div id="newsletterform">
         <center>
-            <h1  class="whiteOne">Pré-lançamento!</h1>
+            <h1  class="whiteOne" style="margin-top: 80px">Pré-lançamento!</h1>
             <i>
                 <h4  class="whiteOne"> CITY WATCH É UM GUIA VIRTUAL PARA O COMPARTILHAMENTO DE SUAS EXPERIÊNCIAS PELAS CIDADES! </h4>
                 <div data-role="navbar" class="whiteOne" style="width: 60%">
@@ -20,18 +21,18 @@
             <a name="participe" class="ancoraHidden" data-ajax="false"></a>
             <h2 class="whiteOne">Participe!</h2>
             <h6  class="whiteOne">
-                Venha fazer parte desta comunidade!
+                Venha fazer parte desta comunidade usando sua rede social.
             </h6>
-            <form action="send.php" method="post" id="newsletter" name="newsletter" style="width:60%">
+            <!-- <form action="send.php" method="post" id="newsletter" name="newsletter" style="width:60%">
                 <input type="email" name="signup-email" id="signup-email" value="" placeholder="meuEmail@MeuDominio.com" />
                 <input type="submit" data-icon="mail"  value="INSCREVA-SE" name="signup-button" id="signup-button"/>
             </form>
             <div id="response"></div>
             <p>
                 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-                <script src="assets/js/lib.js"></script>
+                <script src="assets/js/lib.js"></script> -->
             <div data-role="navbar" class="whiteOne" style="width:50%">
-                Participe usando sua rede social!!
+                <!-- Participe usando sua rede social!! -->
                 <ul>
                     <li><a href="#./inc/facebook.php" data-transition="pop"><img  src="assets/images/f_facebook.png"/><br>Facebook</a></li>
                     <li><a href="./inc/twitter.php" data-ajax="false" ><img  src="assets/images/t_twitter.png"/><br>Twitter</a></li>

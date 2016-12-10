@@ -3,7 +3,7 @@
     #map_canvas {
         margin: 0;
         padding: 0;
-        height:72vh;
+        height:100vh;
         width:100%
     }
 </style>
@@ -47,8 +47,9 @@ $jsonRet = ProfileManager::getGeoLocationsFromProfile($city, $selecao, $range, $
                     var mapOptions = {
                     zoom: 18,
                             center: new google.maps.LatLng(crd.latitude, crd.longitude),
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
+                            mapTypeId: google.maps.MapTypeId.ROADMAP,
+                            styles:[{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#6195a0"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#e6f3d6"},{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45},{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#f4d2c5"},{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"labels.text","stylers":[{"color":"#4e4e4e"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#f4f4f4"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#787878"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#eaf6f8"},{"visibility":"on"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#eaf6f8"}]}]
+                        };
                     map = new google.maps.Map(document.getElementById('map_canvas'),
                             mapOptions);
 <?php
@@ -60,11 +61,11 @@ $i = 0;
 foreach ($vetOpenStreet as $objeto) {
     $indice = rand(0, 4);
     ?>
-            
+
                 var marker<?php echo $i; ?> = new google.maps.Marker({
                 position: new google.maps.LatLng(<?php echo $objeto->lat; ?>, <?php echo $objeto->lon; ?>),
                         map: map,
-                         icon: '<?php echo ProfileManager::getImagePathFromToken($objeto->tipo); ?>',
+                        icon: '<?php echo ProfileManager::getImagePathFromToken($objeto->tipo); ?>',
                         title: '<?php str_replace("'", "´", $objeto->tit); ?>'
                 });
                         try {

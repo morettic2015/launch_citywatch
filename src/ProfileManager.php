@@ -22,8 +22,8 @@ class ProfileManager {
     public static final function getGeoLocationsFromProfile($city, $type, $distance, $lat, $lon, $id) {
         $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=6&id=$id&lat=$lat&lon=$lon&d=$distance&type=$type&myCity=" . ProfileManager::stripAcentos($city);
         $jsonRet = file_get_contents($url);
-
-        // var_dump($jsonRet);
+        //echo $url;die();
+        //var_dump($jsonRet);
         return json_decode($jsonRet);
     }
 
@@ -117,7 +117,7 @@ class ProfileManager {
 
     public static final function btMenu() {
         if (isset($_SESSION['profile'])) {
-            echo '<a href="#myPanel" data-role="button" class="ui-btn ui-btn-inline ui-corner-all ui-shadow"  data-icon="arrow-d">Menu</a>';
+            echo '<a href="#myPanel" data-role="button" class="ui-btn-left"  data-icon="bars">Menu</a>';
         }
     }
 

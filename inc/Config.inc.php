@@ -22,4 +22,6 @@
         const clientSecret = 'LHk9sYNz3oC03zZnh1k-3h5W'; //Google CLIENT dex.phpSECRET
         const redirectUrl = 'http://citywatch.com.br/v1/src/google/index.php';  //return url (url to script)
         const homeUrl = 'http://citywatch.com.br/v1/src/google/index.php';  //return to home
+
+//$config = parse_ini_file(PATH . 'src/database.ini');
 ?>

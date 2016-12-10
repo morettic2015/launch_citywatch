@@ -35,28 +35,22 @@
     <body>
         <div data-role="page">
             <?php $profile->showPanelOrNot(); ?>
-            <div data-role="header" data-vertical-centred  data-theme="a">
-
+            <div data-role="header" data-vertical-centred  data-theme="a"  data-position="fixed" data-fullscreen="true"  data-theme="d">
                 <?php $profile->btMenu(); ?>
-                <div id="newsletterform">
-                    <img src="assets/images/logo.png" height="65" class="ui-btn-icon-left"  align="left"/>
-                    <a data-ajax="false" href="index.php#video" class="ui-btn ui-btn-inline ui-icon-video ui-btn-icon-top">Videos</a>
-                    <a data-ajax="false" href="index.php#categoria" class="ui-btn ui-btn-inline ui-icon-check ui-btn-icon-top">Porque usar?</a>
-                    <a data-ajax="false" href="index.php#participe" class="ui-btn ui-btn-inline ui-icon-check ui-btn-icon-top">Participe</a>
-                </div>
+                <center>
+                    <img src="assets/images/logo.png" height="65"/>
+                </center>
             </div>
 
-            <div role="main" class="ui-content noSpace" >
+            <div role="main" class="ui-content noSpace"  data-theme="c" >
                 <?php $profile->navigate($_GET['p']); ?>
             </div><!-- /content -->
-            <div data-role="footer">
-                <div id="newsletterform">
-                    <center>Powered by:<br></center>
-                    <a data-ajax="false" href="http://morettic.com.br" target="_blank" class="ui-btn-inline">
-                        <img class="wrap" src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" width="108" height="32" border="0">
-                    </a>
-                    <a href="http://genimo.com.br" target="_blank" href="index.php#categoria" class="ui-btn-inline">GENIMO</a>
-                </div>
+            <div data-role="footer"  data-position="fixed" data-fullscreen="true"  data-theme="b" align="right">
+                Powered by:
+                <a href="http://genimo.com.br" target="_blank" class="ui-btn-r">GENIMO</a>
+                <a data-ajax="false" href="http://morettic.com.br" target="_blank" class="ui-btn-inline">
+                    <img class="wrap" src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" width="50" border="0">
+                </a>
             </div>
             <!-- /footer -->
         </div>
