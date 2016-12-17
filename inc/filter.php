@@ -32,7 +32,7 @@ $geoLocation = ProfileManager::getJsonFromLatLon();
 
             <div role="main" class="ui-content"> -->
 <div id="newsletterform">
-    <h1>Filtro</h1>
+    <h1 style="margin-top: 100px">Filtro</h1>
     <small>
         Atualmente sua localização aproximada é: <?php echo $geoLocation->city; ?> (<?php echo $geoLocation->lat; ?>,<?php echo $geoLocation->lon; ?>)
     </small>

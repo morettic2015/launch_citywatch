@@ -11,11 +11,11 @@
                         <h3>Experiências</h3>
                         <ul data-role="listview">
                             <li><a href="./?p=filter">Pesquisar</a></li>
-                            <li><a href="#">Adicionar</a></li>
+                            <li><a href="./?p=new_experience">Adicionar</a></li>
                             <li><a href="#">Favoritos</a></li>
                             <li><a href="#">Top 50</a></li>
                             <li><a href="#">Recomendações</a></li>
-                            <li><a href="#">Compartilhar</a></li>
+                        <!--    <li><a href="#">Compartilhar</a></li> -->
                         </ul>
                     </div><!-- /collapsible -->
 

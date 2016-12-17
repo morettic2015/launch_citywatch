@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.2/jquery.mobile.icons-1.4.2.css" />
         <link rel="stylesheet" href="https://andymatthews.net/code/jquery-mobile-icon-pack/dist/jqm-icon-pack-fa.css"/>
         <link rel="stylesheet" href="./assets/css/style.css">
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCkJEjT73RmsOw1Ldy3S9RbWg_-PDRh8zE"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkJEjT73RmsOw1Ldy3S9RbWg_-PDRh8zE&libraries=places" async defer></script>
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
@@ -46,11 +46,13 @@
                 <?php $profile->navigate($_GET['p']); ?>
             </div><!-- /content -->
             <div data-role="footer"  data-position="fixed" data-fullscreen="true"  data-theme="b" align="right">
+                
                 Powered by:
-                <a href="http://genimo.com.br" target="_blank" class="ui-btn-r">GENIMO</a>
-                <a data-ajax="false" href="http://morettic.com.br" target="_blank" class="ui-btn-inline">
-                    <img class="wrap" src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" width="50" border="0">
+              <!--  <a href="http://genimo.com.br" target="_blank"  data-theme="b" >GENIMO</a> -->
+                <a data-ajax="false" href="http://morettic.com.br" target="_blank" data-theme="b" >
+                    <img class="wrap" src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" height="37" border="0">
                 </a>
+                <a href="#myPanel" data-role="button" class="ui-btn-left" data-theme="b" > <img class="wrap" src="assets/images/download.png" height="37" border="0"></a>
             </div>
             <!-- /footer -->
         </div>
