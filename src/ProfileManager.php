@@ -14,11 +14,11 @@ class ProfileManager {
 
     var $tipoProfile = array("GOOGLE", "TWITTER", "FACEBOOK");
     var $mProfileSource = null;
-    
-    public static final function getImagePathFromId($id){
-        return "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=8&id=".$id;
+
+    public static final function getImagePathFromId($id) {
+        return "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=8&id=" . $id;
     }
-    
+
     public static final function getGeoLocationsFromProfile($city, $type, $distance, $lat, $lon, $id) {
         $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=6&id=$id&lat=$lat&lon=$lon&d=$distance&type=$type&myCity=" . ProfileManager::stripAcentos($city);
         $jsonRet = file_get_contents($url);
@@ -96,6 +96,13 @@ class ProfileManager {
 
 
 
+        return $jsonObjet;
+    }
+
+    public static final function loadFavorite($myId) {
+        $url = 'http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=27&id=6230118498304000';
+        $jsonRet = file_get_contents($url);
+        $jsonObjet = json_decode($jsonRet);
         return $jsonObjet;
     }
 
@@ -358,10 +365,11 @@ class ProfileManager {
         } else if ($token == "IMOVEIS") {
             $path = "./assets/images/imoveis.png";
         }
-       
+
 
         echo $path;
     }
+
     public static final function getImageTokenPkFacebook($url, $redirec = false) {
         $imagename = local_directory . "avatar.jpg";
         $file = $url;

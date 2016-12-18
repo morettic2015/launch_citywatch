@@ -36,7 +36,7 @@ $geoLocation = ProfileManager::getJsonFromLatLon();
     <small>
         Atualmente sua localização aproximada é: <?php echo $geoLocation->city; ?> (<?php echo $geoLocation->lat; ?>,<?php echo $geoLocation->lon; ?>)
     </small>
-    <form method="GET" action="./">
+    <form method="GET" action="./" data-ajax="false">
         <label for="canais[]"  class="ui-hidden-accessible " >
             Selecione uma ou mais categorias:
             <br>

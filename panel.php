@@ -12,9 +12,9 @@
                         <ul data-role="listview">
                             <li><a href="./?p=filter">Pesquisar</a></li>
                             <li><a href="./?p=new_experience">Adicionar</a></li>
-                            <li><a href="#">Favoritos</a></li>
+                            <li><a href="./?p=fav">Favoritos</a></li>
                             <li><a href="#">Top 50</a></li>
-                            <li><a href="#">Recomendações</a></li>
+                        
                         <!--    <li><a href="#">Compartilhar</a></li> -->
                         </ul>
                     </div><!-- /collapsible -->
@@ -25,7 +25,7 @@
                             <li><a href="index.php?p=promocoes">Visualizar</a></li>
                             <li><a href="#">Enviar</a></li>
                             <li><a href="#">Leads</a></li>
-                            <li><a href="#">Estatísticas</a></li>
+                            <li><a href="index.php?p=stats" data-ajax="false">Estatísticas</a></li>
                         </ul>
                     </div><!-- /collapsible -->
 
@@ -51,12 +51,7 @@
                             <li><a href="#">Permissões</a></li>
                         </ul>
                     </div><!-- /collapsible -->
-                    <div data-role="collapsible" data-content-theme="b"  data-collapsed-icon="arrow-d">
-                        <h3>Download</h3>
-                        <ul data-role="listview">
-                            <li><a href="#">Android</a></li>
-                        </ul>
-                    </div><!-- /collapsible -->
+                 
                     <div data-role="collapsible" data-content-theme="b"  data-collapsed-icon="alert">
                         <h3>Ajuda</h3>
                         <ul data-role="listview">

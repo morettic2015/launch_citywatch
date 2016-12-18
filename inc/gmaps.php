@@ -21,11 +21,18 @@ $canais = $_GET['canais'];
 $range = $_GET['range'];
 $id = $_GET['idProfile'];
 $selecao = "";
-$range*=8;
-
-foreach ($canais as $objeto) {
-    $selecao.=$objeto . ",";
+$range*=20;
+//echo $range;
+if (isset($_GET['canais'])) {
+    try {
+        foreach ($canais as $objeto) {
+            $selecao.=$objeto . ",";
+        }
+    } catch (Exception $e) {
+        $selecao = $_GET['canais'] . ',';
+    }
 }
+
 $jsonRet = ProfileManager::getGeoLocationsFromProfile($city, $selecao, $range, $lat, $lon, $id);
 //echo "<pre>";
 //var_dump($jsonRet);
@@ -48,42 +55,44 @@ $jsonRet = ProfileManager::getGeoLocationsFromProfile($city, $selecao, $range, $
                     zoom: 18,
                             center: new google.maps.LatLng(crd.latitude, crd.longitude),
                             mapTypeId: google.maps.MapTypeId.ROADMAP,
-                            styles:[{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#6195a0"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#e6f3d6"},{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45},{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#f4d2c5"},{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"labels.text","stylers":[{"color":"#4e4e4e"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#f4f4f4"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#787878"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#eaf6f8"},{"visibility":"on"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#eaf6f8"}]}]
-                        };
+                            styles:[{"featureType":"administrative", "elementType":"labels.text.fill", "stylers":[{"color":"#6195a0"}]}, {"featureType":"landscape", "elementType":"all", "stylers":[{"color":"#f2f2f2"}]}, {"featureType":"landscape", "elementType":"geometry.fill", "stylers":[{"color":"#ffffff"}]}, {"featureType":"poi", "elementType":"all", "stylers":[{"visibility":"off"}]}, {"featureType":"poi.park", "elementType":"geometry.fill", "stylers":[{"color":"#e6f3d6"}, {"visibility":"on"}]}, {"featureType":"road", "elementType":"all", "stylers":[{"saturation": - 100}, {"lightness":45}, {"visibility":"simplified"}]}, {"featureType":"road.highway", "elementType":"all", "stylers":[{"visibility":"simplified"}]}, {"featureType":"road.highway", "elementType":"geometry.fill", "stylers":[{"color":"#f4d2c5"}, {"visibility":"simplified"}]}, {"featureType":"road.highway", "elementType":"labels.text", "stylers":[{"color":"#4e4e4e"}]}, {"featureType":"road.arterial", "elementType":"geometry.fill", "stylers":[{"color":"#f4f4f4"}]}, {"featureType":"road.arterial", "elementType":"labels.text.fill", "stylers":[{"color":"#787878"}]}, {"featureType":"road.arterial", "elementType":"labels.icon", "stylers":[{"visibility":"off"}]}, {"featureType":"transit", "elementType":"all", "stylers":[{"visibility":"off"}]}, {"featureType":"water", "elementType":"all", "stylers":[{"color":"#eaf6f8"}, {"visibility":"on"}]}, {"featureType":"water", "elementType":"geometry.fill", "stylers":[{"color":"#eaf6f8"}]}]
+                    };
                     map = new google.maps.Map(document.getElementById('map_canvas'),
                             mapOptions);
 <?php
-$vetOpenStreet = $jsonRet->openStreet;
+if (!empty($jsonRet->openStreet)) {
+    $vetOpenStreet = $jsonRet->openStreet;
 //print_r($vetOpenStreet);die();
-$profile = $jsonRet->profiles;
-$dataStore = $jsonRet->rList;
-$i = 0;
-foreach ($vetOpenStreet as $objeto) {
-    $indice = rand(0, 4);
-    ?>
+    $profile = $jsonRet->profiles;
+    $dataStore = $jsonRet->rList;
+    $i = 0;
+    foreach ($vetOpenStreet as $objeto) {
+        $indice = rand(0, 4);
+        ?>
 
-                var marker<?php echo $i; ?> = new google.maps.Marker({
-                position: new google.maps.LatLng(<?php echo $objeto->lat; ?>, <?php echo $objeto->lon; ?>),
-                        map: map,
-                        icon: '<?php echo ProfileManager::getImagePathFromToken($objeto->tipo); ?>',
-                        title: '<?php str_replace("'", "´", $objeto->tit); ?>'
-                });
-                        try {
-                        var contentString<?php echo $i; ?> = '<div id="content"><h1><?php echo str_replace("'", "´", $objeto->tit); ?></h1><img style="border-radius: 50%;max-width:96px" src="<?php echo $objeto->token; ?>"/><?php echo str_replace("'", "´", $objeto->desc); ?><br><?php echo str_replace("'", "´", $objeto->address); ?><br><?php echo $objeto->date; ?><br>Author:<?php echo $profile[$indice]->email; ?><br><img src="<?php
-    echo $profile[$indice]->avatar;
-    ;
-    ?>"/></div>';
-                                var infowindow<?php echo $i; ?> = new google.maps.InfoWindow({
-                                content: contentString<?php echo $i; ?>
-                                });
-                                google.maps.event.addListener(marker<?php echo $i; ?>, 'click', function () {
-                                infowindow<?php echo $i; ?>.open(map, marker<?php echo $i; ?>);
-                                });
-                        } catch (e) {
-                alert(e);
-                }
-    <?php
-    $i++;
+                    var marker<?php echo $i; ?> = new google.maps.Marker({
+                    position: new google.maps.LatLng(<?php echo $objeto->lat; ?>, <?php echo $objeto->lon; ?>),
+                            map: map,
+                            icon: '<?php echo ProfileManager::getImagePathFromToken($objeto->tipo); ?>',
+                            title: '<?php str_replace("'", "´", $objeto->tit); ?>'
+                    });
+                            try {
+                            var contentString<?php echo $i; ?> = '<div id="content"><h1><?php echo str_replace("'", "´", $objeto->tit); ?></h1><img style="border-radius: 50%;max-width:96px" src="<?php echo $objeto->token; ?>"/><?php echo str_replace("'", "´", $objeto->desc); ?><br><?php echo str_replace("'", "´", $objeto->address); ?><br><?php echo $objeto->date; ?><br>Author:<?php echo $profile[$indice]->email; ?><br><img src="<?php
+        echo $profile[$indice]->avatar;
+        ;
+        ?>"/></div>';
+                                    var infowindow<?php echo $i; ?> = new google.maps.InfoWindow({
+                                    content: contentString<?php echo $i; ?>
+                                    });
+                                    google.maps.event.addListener(marker<?php echo $i; ?>, 'click', function () {
+                                    infowindow<?php echo $i; ?>.open(map, marker<?php echo $i; ?>);
+                                    });
+                            } catch (e) {
+                    alert(e);
+                    }
+        <?php
+        $i++;
+    }
 }
 if (!empty($jsonRet->iList)) {
     $vetOpenStreet = $jsonRet->iList;
