@@ -4,12 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>www.Citywatch.com.br</title>
+        <title>Citywatch - Compartilhe suas experiências pelas cidades!</title>
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
         <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
         <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.2/jquery.mobile.icons-1.4.2.css" />
-        <link rel="stylesheet" href="https://andymatthews.net/code/jquery-mobile-icon-pack/dist/jqm-icon-pack-fa.css"/>
         <link rel="stylesheet" href="./assets/css/style.css">
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkJEjT73RmsOw1Ldy3S9RbWg_-PDRh8zE&libraries=places" async defer></script>
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -35,24 +34,25 @@
     <body>
         <div data-role="page">
             <?php $profile->showPanelOrNot(); ?>
-            <div data-role="header" data-vertical-centred  data-theme="a"  data-position="fixed" data-fullscreen="true"  data-theme="d">
+            <div data-role="header" data-vertical-centred  data-theme="a"  data-position="fixed" data-fullscreen="true">
                 <?php $profile->btMenu(); ?>
-                <center>
-                    <img src="assets/images/logo.png" height="65"/>
-                </center>
+                
+                <img src="assets/images/logo.png" height="65" class="ui-btn-icon-left" />
             </div>
 
-            <div role="main" class="ui-content noSpace"  data-theme="c" >
+            <div role="main" class="ui-content noSpace"  data-theme="d" >
                 <?php $profile->navigate($_GET['p']); ?>
             </div><!-- /content -->
-            <div data-role="footer"  data-position="fixed" data-fullscreen="true"  data-theme="b" align="right">
-                
+            <div data-role="footer"   data-position="fixed" data-fullscreen="true" align="right">
+                 <a href="#myPanel" data-role="button" class="ui-btn-left" > 
+                     <img class="wrap" src="assets/images/download.png" height="30" border="0">
+                 </a>
                 Powered by:
-              <!--  <a href="http://genimo.com.br" target="_blank"  data-theme="b" >GENIMO</a> -->
-                <a data-ajax="false" href="http://morettic.com.br" target="_blank" data-theme="b" >
-                    <img class="wrap" src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" height="37" border="0">
+                <!--  <a href="http://genimo.com.br" target="_blank"  data-theme="b" >GENIMO</a> -->
+                <a data-ajax="false" href="http://morettic.com.br" target="_blank">
+                    <img class="wrap" src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" height="30" border="0">
                 </a>
-                <a href="#myPanel" data-role="button" class="ui-btn-left" data-theme="b" > <img class="wrap" src="assets/images/download.png" height="37" border="0"></a>
+               
             </div>
             <!-- /footer -->
         </div>

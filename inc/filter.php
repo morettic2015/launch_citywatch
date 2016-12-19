@@ -37,43 +37,44 @@ $geoLocation = ProfileManager::getJsonFromLatLon();
         Atualmente sua localização aproximada é: <?php echo $geoLocation->city; ?> (<?php echo $geoLocation->lat; ?>,<?php echo $geoLocation->lon; ?>)
     </small>
     <form method="GET" action="./" data-ajax="false">
-        <label for="canais[]"  class="ui-hidden-accessible " >
-            Selecione uma ou mais categorias:
-            <br>
 
-        </label>
         <input type="hidden" value="gmaps" name="p">
         <input type="hidden" value="<?php echo $_SESSION['profile']->key; ?>" name="idProfile">
         <input type="hidden" value="<?php echo $geoLocation->lat; ?>" name="lat">
         <input type="hidden" value="<?php echo $geoLocation->lon; ?>" name="lon">
         <input type="hidden" value="<?php echo $geoLocation->city; ?>" name="city">
-        <label for="basic">Palavra chave:</label>
-        <input type="text" name="keywords" id="keywords" value="" placeholder="ex: taxi" data-mini="true">
-        Ou selecione uma ou mais categorias!
-        <select name="canais[]" id="canais[]" data-native-menu="false" data-mini="true" multiple="multiple" size="4">
-            <option>Categorias</option>
-            <option value="SEGURANCA">Segurança</option>
-            <option value="SAUDE">Saúde</option>
-            <option value="TURISMO">Turismo</option>
-            <option value="TRANSPORTE">Transporte</option>
-            <option value="INFRAESTRUTURA">Infraestrutura</option>
-            <option value="MEIO_AMBIENTE">Meio Ambiente</option>
-            <option value="SHOP">Shopping</option>
-            <option value="CULTURA">Cultura</option>
-            <option value="BEER">Cervejas</option>
-            <option value="EDUCACAO">Educação</option>
-            <option value="ESPORTE">Esportes</option>
-            <option value="ALIMENTACAO">Alimentação</option>
-            <option value="IMOVEIS">Imoveis</option>
-        </select>
-
-        <div data-role="rangeslider" data-mini="true">
-            <label for="range">Distância (KM):</label>
-            <input type="range" name="range" id="range" min="10" max="50" value="0">
+        <div data-role="fieldcontain">
+            <label for="keywords">Palavra chave:</label>
+            <input type="text" name="keywords" id="keywords" value="" placeholder="ex: taxi" data-mini="true">
+        </div>
+        <div data-role="fieldcontain">
+            <label for="canais[]">Categorias:</label>
+            <select name="canais[]" id="canais[]" data-native-menu="false" data-mini="true" multiple="multiple" size="4">
+                <option>Categorias</option>
+                <option value="SEGURANCA">Segurança</option>
+                <option value="SAUDE">Saúde</option>
+                <option value="TURISMO">Turismo</option>
+                <option value="TRANSPORTE">Transporte</option>
+                <option value="INFRAESTRUTURA">Infraestrutura</option>
+                <option value="MEIO_AMBIENTE">Meio Ambiente</option>
+                <option value="SHOP">Shopping</option>
+                <option value="CULTURA">Cultura</option>
+                <option value="BEER">Cervejas</option>
+                <option value="EDUCACAO">Educação</option>
+                <option value="ESPORTE">Esportes</option>
+                <option value="ALIMENTACAO">Alimentação</option>
+                <option value="IMOVEIS">Imoveis</option>
+            </select>
+        </div>
+        <div data-role="fieldcontain">
+            <div data-role="rangeslider" data-mini="true">
+                <label for="range">Distância (KM):</label>
+                <input type="range" name="range" id="range" min="10" max="50" value="0">
+            </div>
         </div>
         <div data-role="controlgroup" data-type="horizontal" data-mini="true" align="right">
-            <input type="submit" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-search ui-btn-b" value="Filtrar">
-            <input type="reset" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" value="Cancelar">
+            <input type="submit" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-search ui-btn-b" data-theme="g" value="Filtrar">
+            <input type="reset" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="f" value="Cancelar">
         </div>
     </form>
 </div>

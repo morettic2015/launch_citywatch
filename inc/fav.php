@@ -9,6 +9,7 @@
     </p>
     <pre>
         <?php
+        var_dump($_SESSION);
         $id = $_SESSION['profile']->key;
         $promos = ProfileManager::loadFavorite($id);
         //var_dump($promos);//die();

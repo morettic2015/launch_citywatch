@@ -174,5 +174,5 @@
         </fieldset>
     </form>
 
-   <a href="#anylink" class="ui-btn ui-icon-check ui-btn-icon-left">Salvar</a>
+   <a href="#anylink" class="ui-btn ui-icon-check ui-btn-icon-left" data-theme="g">Salvar</a>
 </div>

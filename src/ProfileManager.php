@@ -100,7 +100,7 @@ class ProfileManager {
     }
 
     public static final function loadFavorite($myId) {
-        $url = 'http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=27&id=6230118498304000';
+        $url = 'http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=27&id='.$myId;
         $jsonRet = file_get_contents($url);
         $jsonObjet = json_decode($jsonRet);
         return $jsonObjet;
@@ -124,7 +124,8 @@ class ProfileManager {
 
     public static final function btMenu() {
         if (isset($_SESSION['profile'])) {
-            echo '<a href="#myPanel" data-role="button" class="ui-btn-left"  data-icon="bars">Menu</a>';
+            echo '<a href="#myPanel" data-role="button" data-icon="bars" class="ui-btn-left" data-iconpos="notext" data-inline="true"></a>';
+           // echo '<a href="#myPanel" data-role="button" class="ui-btn-left"  data-icon="bars">Menu</a>';
         }
     }
 

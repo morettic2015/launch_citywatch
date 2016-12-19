@@ -2,6 +2,7 @@
 <div class="landindPage">
     <div id="newsletterform">
         <center>
+            
             <h1  class="whiteOne" style="margin-top: 80px">Pré-lançamento!</h1>
             <i>
                 <h4  class="whiteOne"> CITY WATCH  - O APP QUE VAI TE AJUDAR A EXPLORAR AS CIDADES! </h4>
