@@ -1,4 +1,3 @@
-<!-- <iframe src="https://citywatch.com.br/v1/inc/maps.php" allowfullscreen width="100%" height="600"></iframe> -->
 <style>
     #map_canvas {
         margin: 0;
@@ -12,31 +11,31 @@
 //include '../src/ProfileManager.php';
 //($city, $type, $distance, $lat, $lon, $id)
 
-/* @var $_GET type */
-$city = $_GET['city'];
-$lat = $_GET['lat'];
-$lon = $_GET['lon'];
-$kw = $_GET['keywords'];
-$canais = $_GET['canais'];
-$range = $_GET['range'];
-$id = $_GET['idProfile'];
+/* @var $_POST type */
+$city = $_POST['city'];
+$lat = $_POST['lat'];
+$lon = $_POST['lon'];
+$kw = $_POST['keywords'];
+$canais = $_POST['canais'];
+$range = $_POST['range'];
+$id = $_POST['idProfile'];
 $selecao = "";
 $range*=20;
 //echo $range;
-if (isset($_GET['canais'])) {
+if (isset($_POST['canais'])) {
     try {
         foreach ($canais as $objeto) {
             $selecao.=$objeto . ",";
         }
     } catch (Exception $e) {
-        $selecao = $_GET['canais'] . ',';
+        $selecao = $_POST['canais'] . ',';
     }
 }
 
 $jsonRet = ProfileManager::getGeoLocationsFromProfile($city, $selecao, $range, $lat, $lon, $id);
 //echo "<pre>";
 //var_dump($jsonRet);
-//var_dump($_GET);
+//var_dump($_POST);
 ?>
 <script>
     var map;
@@ -106,7 +105,7 @@ if (!empty($jsonRet->iList)) {
                     });
                             var contentString<?php echo $i; ?> = '<div id="content" align="center"><img src="<?php echo $objeto->nmPicture; ?>" width="250" height="250" style="border-radius: 50%;" /><h1><?php echo $objeto->nmCategory; ?></h1><?php echo $objeto->nmProperty; ?><br><?php echo str_replace("'", "´", $objeto->dsAddress); ?><br><?php echo $objeto->date; ?><br>Corretora:<?php echo $objeto->nmCompany; ?><br><img src="<?php
         echo $objeto->dsCompanyLogo;
-        ?>"/></div>';
+        ?>"/><input type="submit" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-star ui-btn-b" data-theme="c" value="Favoritos"></div>';
                             var infowindow<?php echo $i; ?> = new google.maps.InfoWindow({
                             content: contentString<?php echo $i; ?>
                             });
@@ -132,7 +131,7 @@ if (!empty($jsonRet->rList)) {
                     });
                             var contentString<?php echo $i; ?> = '<div id="content" align="center"><img src="<?php echo ProfileManager::getImagePathFromId($objeto->token); ?>" width="250" height="250" style="border-radius: 50%;" /><h1><?php echo str_replace("'", "´", $objeto->tit); ?></h1><?php echo str_replace("'", "´", $objeto->desc); ?><br><?php echo $objeto->tipo; ?><br><?php echo $objeto->date; ?><br>Author:<?php echo $objeto->email; ?><br><img src="<?php
         echo ProfileManager::getImagePathFromId($objeto->avatar);
-        ?>" width="90" height="90"/></div>';
+        ?>" width="90" height="90"/><input type="submit" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-star ui-btn-b" data-theme="c" value="Favoritos"></div>';
                             var infowindow<?php echo $i; ?> = new google.maps.InfoWindow({
                             content: contentString<?php echo $i; ?>
                             });
@@ -155,6 +154,5 @@ if (!empty($jsonRet->rList)) {
     ;
             navigator.geolocation.getCurrentPosition(success, error, options);
 </script>
-
 <div id="map_canvas"></div>
 

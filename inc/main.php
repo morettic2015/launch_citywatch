@@ -32,14 +32,7 @@
             <p>
                 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
                 <script src="assets/js/lib.js"></script> -->
-            <div data-role="navbar" class="whiteOne" style="width:50%">
-                <!-- Participe usando sua rede social!! -->
-                <ul>
-                    <li><a href="#./inc/facebook.php" data-transition="pop"><img  src="assets/images/f_facebook.png"/><br>Facebook</a></li>
-                    <li><a href="./inc/twitter.php" data-ajax="false" ><img  src="assets/images/t_twitter.png"/><br>Twitter</a></li>
-                    <li><a href="./src/google/" data-transition="pop"><img  src="assets/images/g_plus.png"/><br>Google+</a></li>
-                </ul>
-            </div>
+          
             </p>
         </center>
     </div>
@@ -58,7 +51,7 @@
         </ul>
     </div>
     <div id="response"></div>
-    <div data-role="navbar">
+    <div data-role="navbar" style="margin-bottom: 100px">
         <a name="categoria" data-ajax="false"></a>
         <h1>
             Caracteristicas do APP
@@ -67,7 +60,7 @@
         <p>
             Utilize sua rede social e conecte-se conosco!<br>Crie sua conta e veja o que está acontecendo no mapa perto de você!<br>Registre suas experiências e participe!
         </p>
-        <img src="assets/images/slider_c.png"/>
+        <img src="assets/images/slider_c.png" style="width: 70%;"/>
         <h1>
             Categorias do APP
         </h1>

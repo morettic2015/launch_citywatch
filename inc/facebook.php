@@ -109,14 +109,22 @@ if (isset($session)) {
     <?
     require './Database.class.php';
     require '../src/ProfileManager.php';
-    //require '../src/MetaSearch.php';
-    ProfileManager::saveToList($femail); //Save to mail list
-    $imagePk = ProfileManager::getImageTokenPkFacebook("https://graph.facebook.com/" . $_SESSION["FBID"] . "/picture", true);
-    $fbirthday = empty($graphObject->getProperty('birthday')) ? "dd/mm/yyyy" : $graphObject->getProperty('birthday');
-    $jsonProfile = ProfileManager::saveUpdateProfile($femail, $imagePk, $fbfullname, "000.000.000-00", "00000000", "$femail", "n/a", "true", $fbirthday, -1);
-    ProfileManager::setProfileSession($jsonProfile,"FACEBOOK");
+
+    $exists = ProfileManager::iDoExist($femail);
+
+    if (isset($exists->email)) {
+        ProfileManager::setProfileSession($exists, "FACEBOOK");
+        $_SESSION['profile'] = $exists;
+    } else {
+        //require '../src/MetaSearch.php';
+        ProfileManager::saveToList($femail); //Save to mail list
+        $imagePk = ProfileManager::getImageTokenPkFacebook("https://graph.facebook.com/" . $_SESSION["FBID"] . "/picture", true);
+        $fbirthday = empty($graphObject->getProperty('birthday')) ? "dd/mm/yyyy" : $graphObject->getProperty('birthday');
+        $jsonProfile = ProfileManager::saveUpdateProfile($femail, $imagePk, $fbfullname, "000.000.000-00", "00000000", "$femail", "n/a", "true", $fbirthday, -1);
+        ProfileManager::setProfileSession($jsonProfile, "FACEBOOK");
+        $_SESSION['profile'] = $jsonProfile;
+    }
     //die();
-    $_SESSION['profile'] = $jsonProfile;
 //var_dump($_SESSION);
 //
     //

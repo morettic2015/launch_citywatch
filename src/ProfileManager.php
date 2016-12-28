@@ -20,7 +20,7 @@ class ProfileManager {
     }
 
     public static final function getGeoLocationsFromProfile($city, $type, $distance, $lat, $lon, $id) {
-        $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=6&id=$id&lat=$lat&lon=$lon&d=$distance&type=$type&myCity=" . ProfileManager::stripAcentos($city);
+        $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=6&id=$id&lat=$lat&lon=$lon&d=$distance&type=$type&myCity=" . urlencode(ProfileManager::stripAcentos($city));
         $jsonRet = file_get_contents($url);
         //echo $url;die();
         //var_dump($jsonRet);
@@ -56,9 +56,54 @@ class ProfileManager {
         $jsonRet = file_get_contents($url);
         $jsonObjet = json_decode($jsonRet);
 
-
+        // var_dump($jsonObjet);die();
 
         return $jsonObjet;
+    }
+
+    public static final function updateConfig(&$object, $key, $types) {
+        //var_dump($object);
+        $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=31";
+        $url.= '&idProfile=' . $key;
+        $url.= '&nrDoc=' . urlencode($object['rg']);
+        $url.= '&nasc=' . urlencode($object['nasc']);
+        $url.= '&cep=' . urlencode($object['cep']);
+        $url.= '&pais=' . urlencode($object['pais']);
+        $url.= '&comp=' . urlencode($object['complemento']);
+        $url.= '&cidade=' . urlencode($object['cidade']);
+        $url.= '&bairro=' . urlencode($object['bairro']);
+        $url.= '&push=' . urlencode($object['news_enabled']);
+        $url.= '&cell=' . urlencode($object['cell']);
+        $url.= '&sex=' . urlencode($object['sexo']);
+        $url.= '&rua=' . urlencode($object['rua']);
+
+        $prop = "&props=";
+        $canais = $object['canais'];
+        foreach ($canais as $key) {
+
+            $prop.= $key;
+            $prop.= ",";
+        }
+
+        $url .= $prop;
+
+        $jsonRet = file_get_contents($url);
+
+        // var_dump($jsonRet);
+        return json_decode($jsonRet);
+    }
+
+    public static final function getEmail1() {
+        //echo "<pre>";
+        //var_dump($_SESSION);
+        //echo $_SESSION['source'];
+        if ($_SESSION['source'] == "GOOGLE") {
+            return $_SESSION['google_data']['email'];
+        } else if (isset($_SESSION['EMAIL'])) {
+            return $_SESSION['EMAIL'];
+        } else {
+            return $_SESSION['profile_twitter']->email;
+        }
     }
 
     public static final function getEmail() {
@@ -100,7 +145,7 @@ class ProfileManager {
     }
 
     public static final function loadFavorite($myId) {
-        $url = 'http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=27&id='.$myId;
+        $url = 'http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=27&id=' . $myId;
         $jsonRet = file_get_contents($url);
         $jsonObjet = json_decode($jsonRet);
         return $jsonObjet;
@@ -125,7 +170,7 @@ class ProfileManager {
     public static final function btMenu() {
         if (isset($_SESSION['profile'])) {
             echo '<a href="#myPanel" data-role="button" data-icon="bars" class="ui-btn-left" data-iconpos="notext" data-inline="true"></a>';
-           // echo '<a href="#myPanel" data-role="button" class="ui-btn-left"  data-icon="bars">Menu</a>';
+            // echo '<a href="#myPanel" data-role="button" class="ui-btn-left"  data-icon="bars">Menu</a>';
         }
     }
 
@@ -138,6 +183,13 @@ class ProfileManager {
         if (isset($_SESSION['profile'])) {
             include 'panel.php';
         }
+    }
+
+    public static final function looged() {
+        if (isset($_SESSION['profile'])) {
+            return true;
+        }
+        return false;
     }
 
     public static function saveToList($femail) {
@@ -216,6 +268,17 @@ class ProfileManager {
     }
 
     /**
+      @list of types
+     *      */
+    public static function typeList() {
+        $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=28";
+        $jsonRet = file_get_contents($url);
+
+        // var_dump($jsonRet);
+        return json_decode($jsonRet);
+    }
+
+    /**
       @Perfil existe na base de dados;
      *      */
     public static function existProfile($email) {
@@ -226,6 +289,17 @@ class ProfileManager {
         $tot = json_decode($jsonRet);
 
         return $tot->total == "1" ? true : false;
+    }
+
+    public static function iDoExist(&$email) {
+
+
+
+        $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=30&email=" . $email;
+
+        //echo $url;
+        $jsonRet = file_get_contents($url);
+        return json_decode($jsonRet);
     }
 
     public static function saveUpdateProfile($email, $avatar, $nome, $cpfCnpj, $cep, $passwd, $complemento, $pjf, $nasc, $id) {

@@ -174,5 +174,9 @@
         </fieldset>
     </form>
 
-   <a href="#anylink" class="ui-btn ui-icon-check ui-btn-icon-left" data-theme="g">Salvar</a>
+    <div data-role="controlgroup" data-type="horizontal" data-mini="true" align="right">
+        <input type="submit" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-b" data-theme="g" value="Salvar">
+        <input type="reset" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="f" value="Excluir">
+        <input type="reset" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="e" value="Cancelar">
+    </div>
 </div>
