@@ -81,6 +81,45 @@
     </div>
     <div id="response"></div>
 </div>
+<div class="landindPage_video" >
+    <center>
+        <img src="./assets/images/email2.png"/>
+        <h1  class="whiteOne">
+            Nossa comunidade
+        </h1>
+        <div style="margin-bottom: 100px">
+            <h2 class="whiteOne">Conheça quem já participa da nossa comunidade</h2>
+            <div id="newsletterform" class="noSpace" >
+                <?php
+                $usersa = ProfileManager::getUsers();
+                $users = $usersa->result;
+                $total = 1;
+                $tamanho = count($users);
+                $keys = array();
+                for ($i = 0; $i < 28;) {
+                    $pos = rand(0, $tamanho);
+                    if (isset($keys[$post])) {
+                        continue;
+                    }
+                    $objeto = $users[$pos];
+                    $keys[$pos] = $pos;
+                    $i++;
+                    $token = str_replace("[", "", $objeto->image);
+                    $token = str_replace("]", "", $token);
+                    $token = str_replace('"', "", $token);
+                    $nick = str_replace('@', "", $objeto->nick);
+                    $nick = str_replace('.com', "", $nick);
+                    $nick = str_replace(' ', "", $nick);
+                    $nick = substr($nick, 0, 5);
+                    //echo $objeto->image;
+                    echo '<img src="https://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=5&blob-key=' . $token . '" class="img-circle-avatar" title="' . $nick . '@....."/>';
+                }
+                ?>
+            </div>
+        </div>
+    </center>
+    <div id="response"></div>
+</div>
 <div class="landindPage_lead1" >
     <center>
         <img src="./assets/images/email2.png"/>

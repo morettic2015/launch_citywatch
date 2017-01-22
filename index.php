@@ -13,17 +13,48 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkJEjT73RmsOw1Ldy3S9RbWg_-PDRh8zE&libraries=places" async defer></script>
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script> -->
         <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyCiWk8UluHYqp328Js3jHD3Vz9fKNsyx90",
-                authDomain: "gaeloginendpoint.firebaseapp.com",
-                databaseURL: "https://gaeloginendpoint.firebaseio.com",
-                storageBucket: "gaeloginendpoint.appspot.com",
-                messagingSenderId: "811880962924"
-            };
-            firebase.initializeApp(config);
+                    // Initialize Firebase
+                  /*  var config = {
+                    apiKey: "AIzaSyCiWk8UluHYqp328Js3jHD3Vz9fKNsyx90",
+                            authDomain: "gaeloginendpoint.firebaseapp.com",
+                            databaseURL: "https://gaeloginendpoint.firebaseio.com",
+                            storageBucket: "gaeloginendpoint.appspot.com",
+                            messagingSenderId: "811880962924"
+                    };*/
+                  /*  firebase.initializeApp(config);
+                    const messaging = firebase.messaging();
+                    messaging.requestPermission()
+                    .then(function () {
+                    console.log('Notification permission granted.');*/
+                            // TODO(developer): Retrieve an Instance ID token for use with FCM.
+                            // ...
+                  /*  })
+                    .catch(function (err) {
+                    console.log('Unable to get permission to notify.', err);
+                    });*/
+                    // Get Instance ID token. Initially this makes a network call, once retrieved
+                    // subsequent calls to getToken will return from cache.
+                  /*  messaging.getToken()
+                    .then(function(currentToken) {
+                    if (currentToken) {
+                    sendTokenToServer(currentToken);
+                            updateUIForPushEnabled(currentToken);
+                    } else {*/
+                    // Show permission request.
+                  /*  console.log('No Instance ID token available. Request permission to generate one.');
+                            // Show permission UI.
+                            updateUIForPushPermissionRequired();
+                            setTokenSentToServer(false);
+                    }
+                    })
+                    .catch(function(err) {
+                    console.log('An error occurred while retrieving token. ', err);
+                            showToken('Error retrieving Instance ID token. ', err);
+                            setTokenSentToServer(false);
+                    });*/
+
         </script>
         <?php
         include_once './src/ProfileManager.php';
@@ -36,16 +67,16 @@
             <?php $profile->showPanelOrNot(); ?>
             <div data-role="header" data-vertical-centred  data-theme="a"  data-position="fixed" data-fullscreen="true">
                 <?php $profile->btMenu(); ?>
-                <?php if(!$profile->looged()){ ?>
-                <a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-right ui-icon-lock ui-btn-icon-right">Minha conta</a>
-                <div data-role="popup" id="popupMenu" data-theme="g">
-                    <ul data-role="listview" data-inset="true">
-                        <li data-role="list-divider">Selecione sua Rede social</li>
-                        <li><a href="#./inc/facebook.php" data-transition="pop">Facebook</a></li>
-                        <li><a href="./inc/twitter.php" data-ajax="false" >Twitter</a></li>
-                        <li><a href="#./src/google/" data-transition="pop">Google+</a></li>
-                    </ul>
-                </div>
+                <?php if (!$profile->looged()) { ?>
+                    <a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-right ui-icon-lock ui-btn-icon-right">Minha conta</a>
+                    <div data-role="popup" id="popupMenu" data-theme="g">
+                        <ul data-role="listview" data-inset="true">
+                            <li data-role="list-divider">Selecione sua Rede social</li>
+                            <li><a href="#./inc/facebook.php" data-transition="pop">Facebook</a></li>
+                            <li><a href="./inc/twitter.php" data-ajax="false" >Twitter</a></li>
+                            <li><a href="#./src/google/" data-transition="pop">Google+</a></li>
+                        </ul>
+                    </div>
                 <? } ?>
 
                 <img src="assets/images/logo.png" height="65" class="ui-btn-icon-left" />
@@ -61,7 +92,7 @@
                 Powered by:
                 <!--  <a href="http://genimo.com.br" target="_blank"  data-theme="b" >GENIMO</a> -->
                 <a data-ajax="false" href="http://morettic.com.br" target="_blank">
-                    <img class="wrap" src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" height="30" border="0">
+                    <img class="wrap" src="https://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" height="30" border="0">
                 </a>
 
             </div>

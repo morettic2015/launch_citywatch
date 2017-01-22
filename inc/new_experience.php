@@ -97,6 +97,7 @@
 
         alert(document.ponto.lon.value);
     }
+    
 </script>
 <div class="landindPage_lead1">
     <h1 class="whiteOne tit_landind">Pontos de interesse</h1>
@@ -127,13 +128,13 @@
             <input id="fFoto1" name="fFoto1" type="file">
 
             <label for="fTipo">Contexto da experiência</label>
-            <select name="fTipo" id="fTipo">
+            <select name="fTipo" id="fTipo" data-native-menu="false">
                 <?php
                 $tpList = ProfileManager::typeList();
                 $vet = $tpList->types;
                 foreach ($vet as $objeto) {
                     ?>
-                    <option value="<?php echo @$objeto ?>"><?php echo @$objeto; ?></option>
+                    <option value="<?php echo @$objeto; ?>"><?php echo @$objeto; ?></option>
                     <?php
                 }
                 ?>
@@ -149,6 +150,7 @@
         </fieldset>
         <div data-role="controlgroup" data-type="horizontal" data-mini="true" align="right">
             <input type="submit" name="Salvar" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-b" data-theme="g" value="Salvar">
+            <input type="button" name="Excluir" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-b" data-theme="b" value="Excluir">
             <input type="reset" name="Resetar" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="e" value="Cancelar">
         </div>
     </form>
@@ -156,17 +158,17 @@
 <div class="landindPage_who">
     <h1 class="whiteOne tit_landind">Minhas experiências</h1>
     <h2 class="whiteOne subtit_landind">Seus pontos de interesse e experiências compartilhadas</h2>
-</div>
-<div id="newsletterform">
-    <ul data-role="listview" data-inset="true">
-        
-        <!-- http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=32&id=5660531612450816 -->
-        <li>
-            <a href="#">
-                <h2>Symbian</h2>
-                <p>Nokia confirms the end of Symbian</p>
-                <p class="ui-li-aside">Symbian</p>
-            </a>
-        </li>
-    </ul>
+    <div id="newsletterform">
+        <ul data-role="listview" data-inset="true">
+
+            <!-- http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=32&id=5660531612450816 -->
+            <li>
+                <a href="#">
+                    <h2>Symbian</h2>
+                    <p>Nokia confirms the end of Symbian</p>
+                    <p class="ui-li-aside">Symbian</p>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>

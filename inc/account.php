@@ -29,12 +29,12 @@ foreach ($conf as $post) {
 <div id="newsletterform" data-theme="f">
 
     <div data-role="popup" id="chatWindow" data-position-to="window" data-transition="turn"><p>Seus dados foram atualizados com sucesso.</p></div>
-    <form method="GET" action="index.php?p=account" data-ajax="false" style="margin-bottom: 150px">
+    <form method="POST" action="index.php?p=account" data-ajax="false" style="margin-bottom: 150px">
         <?php
         /**
          * Sucess message
          */
-        if (!empty($_GET)) {
+        if (!empty($_POST)) {
             ?>
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
@@ -56,7 +56,10 @@ foreach ($conf as $post) {
 
                 <input type="hidden" readonly="true" id="idProfile" value="<?php echo $profile->key; ?>">
 
-
+                 <div data-role="fieldcontain">
+                    <label for="checkbox-empresa">Sou uma empresa</label>
+                    <input type="checkbox" id="checkbox-empresa" data-role="flipswitch" name="empresa" <?php echo $profile->push ? "checked" : ""; ?>>
+                </div>
                 <div data-role="fieldcontain">
                     <label for="rg">Nr.Documento:</label>
                     <input type="text" name="rg" id="rg"  placeholder="xxx.yyy.iii-xx" data-mini="true"  value="<?php echo $profile->cpfCnpj; ?>">

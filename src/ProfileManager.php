@@ -19,6 +19,14 @@ class ProfileManager {
         return "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=8&id=" . $id;
     }
 
+    public static final function getUsers() {
+        $url = "https://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=34";
+        $jsonRet = file_get_contents($url);
+        //echo $url;die();
+        //var_dump($jsonRet);
+        return json_decode($jsonRet);
+    }
+
     public static final function getGeoLocationsFromProfile($city, $type, $distance, $lat, $lon, $id) {
         $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=6&id=$id&lat=$lat&lon=$lon&d=$distance&type=$type&myCity=" . urlencode(ProfileManager::stripAcentos($city));
         $jsonRet = file_get_contents($url);
@@ -235,16 +243,15 @@ class ProfileManager {
         }
     }
 
-    function saveLocation($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId){
+    function saveLocation($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId) {
         $url = ProfileManager::getUrlPath($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId);
-        
+
         echo $url;
         //$jsonRet = file_get_contents($url);
-
         // var_dump($jsonRet);
         //return json_decode($jsonRet);
     }
-    
+
     function getUrlPath($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId) {
         return $url = "https://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=1&" .
                 "titulo=" . urlencode($titulo) .
