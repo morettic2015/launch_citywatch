@@ -22,18 +22,19 @@ foreach ($conf as $post) {
 }
 //var_dump($profile);
 ?>
+<div class="landindPage_lead1">
+    <h1 class="whiteOne tit_landind">Perfil</h1>
+    <h2 class="whiteOne subtit_landind">Mantenha seus dados atualizados e configure suas preferências</h2>
+</div>
 <div id="newsletterform" data-theme="f">
-    <h1 style="margin-top: 100px;font-size: 30px" class="ui-btn ui-icon-user ui-btn-icon-top"  data-theme="f" >
-        Conta
-    </h1>
-    <h3>Mantenha seus dados atualizados e configure suas preferências</h3>
+
     <div data-role="popup" id="chatWindow" data-position-to="window" data-transition="turn"><p>Seus dados foram atualizados com sucesso.</p></div>
-    <form method="POST" action="index.php?p=account" data-ajax="false" style="margin-bottom: 150px">
+    <form method="GET" action="index.php?p=account" data-ajax="false" style="margin-bottom: 150px">
         <?php
         /**
          * Sucess message
          */
-        if (!empty($_POST)) {
+        if (!empty($_GET)) {
             ?>
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
@@ -169,29 +170,3 @@ foreach ($conf as $post) {
         $("#sexo").attr('required', true);
     </script>
 </div>
-<style>
-    /* The alert message box */
-    .alert {
-        padding: 20px;
-        background-color: #2196f3; /* Red */
-        color: white;
-        margin-bottom: 15px;
-    }
-
-    /* The close button */
-    .closebtn {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    /* When moving the mouse over the close button */
-    .closebtn:hover {
-        color: black;
-    }
-</style>

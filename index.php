@@ -51,7 +51,7 @@
                 <img src="assets/images/logo.png" height="65" class="ui-btn-icon-left" />
             </div>
 
-            <div role="main" class="ui-content noSpace"  data-theme="d" >
+            <div role="main" class="ui-content noSpace">
                 <?php $profile->navigate($_GET['p']); ?>
             </div><!-- /content -->
             <div data-role="footer"   data-position="fixed" data-fullscreen="true" align="right">

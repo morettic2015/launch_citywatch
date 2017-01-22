@@ -11,47 +11,47 @@
                         <h3>Experiências</h3>
                         <ul data-role="listview" data-iconpos="left">
                             <li><a data-ajax="false"  href="./?p=filter">Pesquisar</a></li>
-                           <!--  <li><a href="./?p=new_experience">Adicionar</a></li>
-                           <li><a href="./?p=fav">Favoritos</a></li>
-                            <li><a href="#">Top 50</a></li> -->
+                            <li><a href="./?p=new_experience">Minhas experiências</a>
+                                <!-- <li><a href="./?p=fav">Favoritos</a></li>
+                                 <li><a href="#">Top 50</a></li> --> 
 
-                            <!--    <li><a href="#">Compartilhar</a></li> -->
+                                <!--    <li><a href="#">Compartilhar</a></li> -->
                         </ul>
                     </div><!-- /collapsible -->
 
-                 <!--   <div data-role="collapsible" data-content-theme="a"  data-collapsed-icon="star" data-iconpos="left">
-                        <h3>Promoções</h3>
-                        <ul data-role="listview" data-iconpos="left" data-theme="a">
-                            <li><a href="index.php?p=promocoes">Visualizar</a></li>
-                            <li><a href="#">Enviar</a></li>
-                            <li><a href="#">Leads</a></li>
-                            <li><a href="index.php?p=stats" data-ajax="false">Estatísticas</a></li>
-                        </ul>
-                    </div>--><!-- /collapsible -->
+                    <!--   <div data-role="collapsible" data-content-theme="a"  data-collapsed-icon="star" data-iconpos="left">
+                           <h3>Promoções</h3>
+                           <ul data-role="listview" data-iconpos="left" data-theme="a">
+                               <li><a href="index.php?p=promocoes">Visualizar</a></li>
+                               <li><a href="#">Enviar</a></li>
+                               <li><a href="#">Leads</a></li>
+                               <li><a href="index.php?p=stats" data-ajax="false">Estatísticas</a></li>
+                           </ul>
+                       </div>--><!-- /collapsible -->
 
-                 <!--   <div data-role="collapsible" data-content-theme="b" data-collapsed-icon="mail" data-iconpos="left">
-                        <h3>Mensagens</h3>
-                        <ul data-role="listview" data-iconpos="left">
-                            <li><a href="#">Caixa de entrada</a></li>
-                            <li><a href="#">Contatos</a></li>
-                        </ul>
-                    </div>--><!-- /collapsible -->
+                    <!--   <div data-role="collapsible" data-content-theme="b" data-collapsed-icon="mail" data-iconpos="left">
+                           <h3>Mensagens</h3>
+                           <ul data-role="listview" data-iconpos="left">
+                               <li><a href="#">Caixa de entrada</a></li>
+                               <li><a href="#">Contatos</a></li>
+                           </ul>
+                       </div>--><!-- /collapsible -->
                     <div data-role="collapsible" data-content-theme="b"  data-collapsed-icon="user" data-iconpos="left">
                         <h3>Minha conta</h3>
                         <ul data-role="listview" data-iconpos="left">
                             <!--  <li><a href="#">Dados pessoais</a></li> -->
                             <li><a data-ajax="false" href="index.php?p=account">Perfil</a></li>
-                          <!--  <li><a href="index.php?p=planos">Plano</a></li> -->
+                            <!--  <li><a href="index.php?p=planos">Plano</a></li> -->
                         </ul>
                     </div><!-- /collapsible -->
-                   <!-- <div data-role="collapsible" data-content-theme="b"  data-collapsed-icon="gear" data-iconpos="left">
-                        <h3>API</h3>
-                        <ul data-role="listview" data-iconpos="left">
-                            <li><a href="#">Chave de acesso</a></li>
-                            <li><a href="#">Permissões</a></li>
-                            <li><a href="index.php?p=datasource">Fonte de dados</a></li>
-                        </ul>
-                    </div>--><!-- /collapsible -->
+                    <!-- <div data-role="collapsible" data-content-theme="b"  data-collapsed-icon="gear" data-iconpos="left">
+                         <h3>API</h3>
+                         <ul data-role="listview" data-iconpos="left">
+                             <li><a href="#">Chave de acesso</a></li>
+                             <li><a href="#">Permissões</a></li>
+                             <li><a href="index.php?p=datasource">Fonte de dados</a></li>
+                         </ul>
+                     </div>--><!-- /collapsible -->
 
                     <div data-role="collapsible" data-content-theme="b"  data-collapsed-icon="alert" data-iconpos="left">
                         <h3>Ajuda</h3>

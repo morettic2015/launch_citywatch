@@ -235,6 +235,16 @@ class ProfileManager {
         }
     }
 
+    function saveLocation($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId){
+        $url = ProfileManager::getUrlPath($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId);
+        
+        echo $url;
+        //$jsonRet = file_get_contents($url);
+
+        // var_dump($jsonRet);
+        //return json_decode($jsonRet);
+    }
+    
     function getUrlPath($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId) {
         return $url = "https://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=1&" .
                 "titulo=" . urlencode($titulo) .

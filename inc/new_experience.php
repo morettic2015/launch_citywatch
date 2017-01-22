@@ -1,56 +1,5 @@
 <style>
-    #map1 {
-        height: 300px;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-    .controls {
-        margin-top: 10px;
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
 
-    #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 300px;
-    }
-
-    #pac-input:focus {
-        border-color: #4d90fe;
-    }
-
-    .pac-container {
-        font-family: Roboto;
-    }
-
-    #type-selector {
-        color: #fff;
-        background-color: #4d90fe;
-        padding: 5px 11px 0px 11px;
-    }
-
-    #type-selector label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-    }
-    #feedback { font-size: 1.4em; }
-    #selectable .ui-selecting { background: #FECA40; }
-    #selectable .ui-selected { background: #F39814; color: white; }
-    #selectable { list-style-type: none; margin: 0; padding: 0; width: 98%; }
-    #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
 </style>
 <script type="text/javascript">
     var options = {
@@ -109,6 +58,7 @@
                 anchor: new google.maps.Point(17, 34),
                 scaledSize: new google.maps.Size(35, 35)
             }));
+            localizacao = {lat: place.geometry.location.lat(), lon: place.geometry.location.lng()}
             marker.setPosition(place.geometry.location);
             marker.setVisible(true);
 
@@ -141,11 +91,33 @@
 
 
     }
+    function submitForm() {
+        document.ponto.lat.value = localizacao.lat;
+        document.ponto.lon.value = localizacao.lon;
+
+        alert(document.ponto.lon.value);
+    }
 </script>
+<div class="landindPage_lead1">
+    <h1 class="whiteOne tit_landind">Pontos de interesse</h1>
+    <h2 class="whiteOne subtit_landind">Registre os pontos de seu interesse <br>e compartilhe sua experiência com quem está próximo!</h2>
+</div>
 <div id="newsletterform">
-    <h1 style="margin-top: 100px">Registrar Experiência</h1>
-    <p>Registre sua experiência e compartilhe com quem está próximo!</p>
-    <form>
+
+    <?php
+    /**
+     * Sucess message
+     */
+    if (!empty($_GET['fTit'])) {
+        ?>
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
+            Ponto de interesse salvo com sucesso.
+        </div>
+        <?php
+    }
+    ?>
+    <form method="GET" name="ponto" action="index.php" data-ajax="false" onsubmit="submitForm()">
         <fieldset class="ui-field-contain">
             <label for="fTit">Título:</label>
             <input type="text" name="fTit" id="fTit"  placeholder="Título de sua experiência">
@@ -156,27 +128,45 @@
 
             <label for="fTipo">Contexto da experiência</label>
             <select name="fTipo" id="fTipo">
-                <option value="mon">Monday</option>
-                <option value="tue">Tuesday</option>
-                <option value="wed">Wednesday</option>
-                <option value="thu">Thursday</option>
-                <option value="fri">Friday</option>
-                <option value="sat">Saturday</option>
-                <option value="sun">Sunday</option>
+                <?php
+                $tpList = ProfileManager::typeList();
+                $vet = $tpList->types;
+                foreach ($vet as $objeto) {
+                    ?>
+                    <option value="<?php echo @$objeto ?>"><?php echo @$objeto; ?></option>
+                    <?php
+                }
+                ?>
             </select>
             <br>
-
-
+            <input type="hidden" name="lat" value="">
+            <input type="hidden" name="lon" value="">
+            <input type="hidden" name="p" value="new_experience">
             <input id="pac-input" name="endereco" class="controls" type="text" placeholder="Localização da experiência">
             <div id="map1">
             </div>
 
         </fieldset>
+        <div data-role="controlgroup" data-type="horizontal" data-mini="true" align="right">
+            <input type="submit" name="Salvar" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-b" data-theme="g" value="Salvar">
+            <input type="reset" name="Resetar" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="e" value="Cancelar">
+        </div>
     </form>
-
-    <div data-role="controlgroup" data-type="horizontal" data-mini="true" align="right">
-        <input type="submit" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-b" data-theme="g" value="Salvar">
-        <input type="reset" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="f" value="Excluir">
-        <input type="reset" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="e" value="Cancelar">
-    </div>
+</div>
+<div class="landindPage_who">
+    <h1 class="whiteOne tit_landind">Minhas experiências</h1>
+    <h2 class="whiteOne subtit_landind">Seus pontos de interesse e experiências compartilhadas</h2>
+</div>
+<div id="newsletterform">
+    <ul data-role="listview" data-inset="true">
+        
+        <!-- http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=32&id=5660531612450816 -->
+        <li>
+            <a href="#">
+                <h2>Symbian</h2>
+                <p>Nokia confirms the end of Symbian</p>
+                <p class="ui-li-aside">Symbian</p>
+            </a>
+        </li>
+    </ul>
 </div>

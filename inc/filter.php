@@ -10,8 +10,11 @@ $geoLocation = ProfileManager::getJsonFromLatLon();
 //var_dump($email);
 $tpList = ProfileManager::typeList();
 ?>
+<div class="landindPage_lead1">
+    <h1 class="whiteOne tit_landind">Pesquisar</h1>
+    <h2 class="whiteOne subtit_landind">Selecione as categorias, distância <br>para localizar <!-- eventos e --> pontos de interesse </h2>
+</div>
 <div id="newsletterform">
-    <h1 style="margin-top: 100px;font-size: 30px" class="ui-btn ui-icon-search ui-btn-icon-top"  data-theme="f" >Pesquisar</h1>
     <small>
         Atualmente sua localização aproximada é: <?php echo $geoLocation->city; ?> (<?php echo $geoLocation->lat; ?>,<?php echo $geoLocation->lon; ?>)
     </small>
@@ -37,7 +40,6 @@ $tpList = ProfileManager::typeList();
                     <?php
                 }
                 ?>
-                ?>
             </select>
         </div>
         <div data-role="fieldcontain">
@@ -46,6 +48,18 @@ $tpList = ProfileManager::typeList();
                 <input type="range" name="range" id="range" min="50" max="2000" value="0">
             </div>
         </div>
+    <!--    <div data-role="fieldcontain">
+            <label for="event">Pesquisar eventos:</label>
+            <input type="checkbox" name="event" id="event"/>
+        </div>
+        <div data-role="fieldcontain">
+            <label for="data1">Data inicial do evento:</label>
+            <input type="date" name="data1" id="data1"/>
+        </div>
+        <div data-role="fieldcontain">
+            <label for="data2">Data final do evento:</label>
+            <input type="date" name="data2" id="data2"/>
+        </div> -->
         <div data-role="controlgroup" data-type="horizontal" data-mini="true" align="right">
             <input type="submit" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-search ui-btn-b" data-theme="g" value="Filtrar">
             <input type="reset" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="f" value="Cancelar">
