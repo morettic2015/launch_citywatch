@@ -11,8 +11,15 @@ $geoLocation = ProfileManager::getJsonFromLatLon();
 $tpList = ProfileManager::typeList();
 ?>
 <div class="landindPage_lead1">
+     <img src="./assets/images/search.svg" class="ico_landind"/>
     <h1 class="whiteOne tit_landind">Pesquisar</h1>
     <h2 class="whiteOne subtit_landind">Selecione as categorias, distância <br>para localizar <!-- eventos e --> pontos de interesse </h2>
+</div>
+<div  class="barra_up">
+    <img src="./assets/images/Cinza_inner.svg" style="width: 100%"/>
+</div>
+<div  class="barra_up">
+
 </div>
 <div id="newsletterform">
     <small>
@@ -45,21 +52,21 @@ $tpList = ProfileManager::typeList();
         <div data-role="fieldcontain">
             <div data-role="rangeslider" data-mini="true">
                 <label for="range">Distância (KM):</label>
-                <input type="range" name="range" id="range" min="50" max="2000" value="0">
+                <input type="range" name="range" id="range" min="1" max="100" value="0">
             </div>
         </div>
-    <!--    <div data-role="fieldcontain">
-            <label for="event">Pesquisar eventos:</label>
-            <input type="checkbox" name="event" id="event"/>
-        </div>
-        <div data-role="fieldcontain">
-            <label for="data1">Data inicial do evento:</label>
-            <input type="date" name="data1" id="data1"/>
-        </div>
-        <div data-role="fieldcontain">
-            <label for="data2">Data final do evento:</label>
-            <input type="date" name="data2" id="data2"/>
-        </div> -->
+        <!--    <div data-role="fieldcontain">
+                <label for="event">Pesquisar eventos:</label>
+                <input type="checkbox" name="event" id="event"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="data1">Data inicial do evento:</label>
+                <input type="date" name="data1" id="data1"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="data2">Data final do evento:</label>
+                <input type="date" name="data2" id="data2"/>
+            </div> -->
         <div data-role="controlgroup" data-type="horizontal" data-mini="true" align="right">
             <input type="submit" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-search ui-btn-b" data-theme="g" value="Filtrar">
             <input type="reset" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="f" value="Cancelar">

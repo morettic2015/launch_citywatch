@@ -243,13 +243,41 @@ class ProfileManager {
         }
     }
 
-    function saveLocation($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId) {
-        $url = ProfileManager::getUrlPath($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId);
+    function saveLocation($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId, $evento) {
 
-        echo $url;
-        //$jsonRet = file_get_contents($url);
+
+        $imagem = explode(",", $imageKey);
+        $upload = "http://gaeloginendpoint.appspot.com/upload.exec";
+        $jsonRet = file_get_contents($upload);
+        $jsonObjet = json_decode($jsonRet);
+        //var_dump($jsonRet);
+        $handle = fopen("/home/citywatch/www/v1/dir/$imagem[0]", "r");
+        $url = "$jsonObjet->uploadPath";
+
+        $post_array = array(
+            "myFile" => curl_file_create("/home/citywatch/www/v1/dir/$imagem[0]", 'image/jpeg', "$imagem[0]"),
+            "upload" => "$imagem[0]"
+        );
+        $ch = ProfileManager::retCURL($post_array, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_array);
+        $response = curl_exec($ch);
+        $jsonRet = ProfileManager::saveImageBigData($response, $url);
+
+        $url = ProfileManager::getUrlPath($titulo, $lat, $lon, $description, $jsonRet, $tipo, $address, $profileId) . "&evento=" . $evento;
+        $jsonRet = file_get_contents($url);
+        $jsonObjet = json_decode($jsonRet);
+
+        //var_dump($jsonObjet);
+
+        return $jsonObjet;
+    }
+
+    function gExperience($id) {
+        $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=32&id=" . $id;
+        $jsonRet = file_get_contents($url);
+
         // var_dump($jsonRet);
-        //return json_decode($jsonRet);
+        return json_decode($jsonRet);
     }
 
     function getUrlPath($titulo, $lat, $lon, $description, $imageKey, $tipo, $address, $profileId) {

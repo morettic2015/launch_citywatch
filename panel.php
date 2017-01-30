@@ -11,7 +11,7 @@
                         <h3>Experiências</h3>
                         <ul data-role="listview" data-iconpos="left">
                             <li><a data-ajax="false"  href="./?p=filter">Pesquisar</a></li>
-                            <li><a href="./?p=new_experience">Minhas experiências</a>
+                            <li><a href="./?p=experience">Minhas experiências</a>
                                 <!-- <li><a href="./?p=fav">Favoritos</a></li>
                                  <li><a href="#">Top 50</a></li> --> 
 
@@ -56,7 +56,7 @@
                     <div data-role="collapsible" data-content-theme="b"  data-collapsed-icon="alert" data-iconpos="left">
                         <h3>Ajuda</h3>
                         <ul data-role="listview" data-iconpos="left">
-                            <li><a href="#">FAQ</a></li>
+                            <li><a href="index.php?p=help">Ajuda</a></li>
                             <li><a  href="index.php?p=eula">Termo de uso</a></li>
                         </ul>
                     </div><!-- /collapsible -->

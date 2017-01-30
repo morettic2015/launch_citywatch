@@ -1,11 +1,13 @@
 
 <div class="landindPage noSpace">
+
     <div id="newsletterform" class="noSpace" >
         <center >
             <!-- <h1  class="whiteOne" style="margin-top: 200px;">CITY WATCH</h1> -->
             <h1  class="whiteOne" style="margin-bottom: 200px;margin-top: 200px;font-size: 40px">COMPARTILHANDO EXPERIÊNCIAS<br>PELAS CIDADES! </h1>
         </center>
     </div>
+    <img src="./assets/images/Preto12.svg" style="width: 100%"/>
 </div>
 <div class="landindPage_video">
     <div id="newsletterform" class="noSpace" >
@@ -23,8 +25,10 @@
 
         </div>
     </div>
+
 </div>
 <div class="landindPage_carac">
+    <img src="./assets/images/Preto11.svg" style="width: 100%"/>
     <div id="newsletterform" class="noSpace" >
         <h1>
             CATEGORIAS
@@ -56,7 +60,14 @@
         </div>
     </div>
 </div>
+<div  class="barra_up">
+    <img src="./assets/images/Cinza_claro12.svg" style="width: 100%"/>
+</div>
 <div class="landindPage_who">
+
+    <center>
+        <img src="./assets/images/share.png"/>
+    </center>
     <h1  class="whiteOne" style="text-align:center">
         COMPARTILHE
     </h1>
@@ -77,18 +88,21 @@
                 <p class="whiteOne" >Ja precisou de um borracheiro no domingo ou feriado? Fique por dentro dos seus pontos de interesse na cidade. Receba novidades dos estabelecimentos de sua preferência e receba promoções quando você estiver por perto.</p>
             </div>
         </div>
-
     </div>
     <div id="response"></div>
+
 </div>
-<div class="landindPage_video" >
+<div  class="barra_up">
+    <img src="./assets/images/Cinza_claro11.svg" style="width: 100%"/>
+</div>
+<div class="landindPage_carac" >
     <center>
-        <img src="./assets/images/email2.png"/>
-        <h1  class="whiteOne">
-            Nossa comunidade
+        <img src="./assets/images/community.png"/>
+        <h1>
+            NOSSA COMUNIDADE
         </h1>
         <div style="margin-bottom: 100px">
-            <h2 class="whiteOne">Conheça quem já participa da nossa comunidade</h2>
+            <h2 >Conheça quem já participa da nossa comunidade</h2>
             <div id="newsletterform" class="noSpace" >
                 <?php
                 $usersa = ProfileManager::getUsers();
@@ -96,7 +110,7 @@
                 $total = 1;
                 $tamanho = count($users);
                 $keys = array();
-                for ($i = 0; $i < 28;) {
+                for ($i = 0; $i < 14;) {
                     $pos = rand(0, $tamanho);
                     if (isset($keys[$post])) {
                         continue;
@@ -120,6 +134,56 @@
     </center>
     <div id="response"></div>
 </div>
+<div  class="barra_up">
+    <img src="./assets/images/Cinza_claro12.svg" style="width: 100%"/>
+</div>
+<div class="landindPage_who">
+
+    <center>
+        <img src="./assets/images/nuvem_branca.svg"/>
+    </center>
+    <h1  class="whiteOne" style="text-align:center">
+        DADOS ABERTOS
+    </h1>
+    <h2 class="whiteOne" style="text-align:center">
+        Conectamos dados abertos para criar experiências.
+    </h2>
+    <div class="newsletterform" align="center" style="margin-bottom: 30px">
+        <a href="#popupWebhose" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">
+            <img class="wrap" src="assets/images/Webhose-01.png" height="48" border="0">
+        </a>
+        <div data-role="popup" id="popupWebhose">
+            <p>Webhose IO é um crawler fornece notícias e dados relevantes e o City watch geolocaliza para você!</p>
+        </div>
+        <a href="#popupOpenstreet" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">
+            <img class="wrap" src="assets/images/Openstreet-01.png" height="48" border="0">
+        </a>
+        <div data-role="popup" id="popupOpenstreet">
+            <p>Openstreetmap fornece dados complementares para as diversas categorias do APP</p>
+        </div>
+        <a href="#popupMaps" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">
+            <img class="wrap" src="assets/images/Maps.svg" height="48" border="0">
+        </a>
+        <div data-role="popup" id="popupMaps">
+            <p>Utilizamos a plataforma e todas as funcionalidades do Google Maps que você ja conhece</p>
+        </div>
+        <a href="#popupTwitter" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">
+            <img class="wrap" src="assets/images/Twitter.svg" height="48" border="0">
+        </a>
+        <div data-role="popup" id="popupTwitter">
+            <p>Estamos integrados com os twetts geolocalizados na região</p>
+        </div>
+        <a href="#popupGenimo" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">
+            <img class="wrap" src="assets/images/Genimo.svg" height="48" border="0">
+        </a>
+        <div data-role="popup" id="popupGenimo">
+            <p>Genimo é um sistema de gestão imobiliária oferecendo um imóvel perto de você</p>
+        </div>
+    </div>
+    <div id="response"></div>
+
+</div>
+
 <div class="landindPage_lead1" >
     <center>
         <img src="./assets/images/email2.png"/>

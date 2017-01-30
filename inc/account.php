@@ -13,18 +13,25 @@ if (!empty($_POST)) {
     ProfileManager::updateConfig($_POST, $profile->key, $profile->types);
     $profile = ProfileManager::iDoExist($email);
 }
+$hashMap = array();
 //var_dump($profile->config);
 $conf = $profile->config;
-
-$hashMap = array();
-foreach ($conf as $post) {
-    $hashMap[$post] = $post;
+if (!empty($profile->config)) {
+    
+    foreach ($conf as $post) {
+        $hashMap[$post] = $post;
+    }
 }
 //var_dump($profile);
 ?>
-<div class="landindPage_lead1">
+<div class="landindPage_tit">
+    <img src="./assets/images/profile.svg" class="ico_landind"/>
     <h1 class="whiteOne tit_landind">Perfil</h1>
     <h2 class="whiteOne subtit_landind">Mantenha seus dados atualizados e configure suas preferências</h2>
+
+</div>
+<div  class="barra_up">
+    <img src="./assets/images/Cinza_inner.svg" style="width: 100%"/>
 </div>
 <div id="newsletterform" data-theme="f">
 
@@ -56,7 +63,7 @@ foreach ($conf as $post) {
 
                 <input type="hidden" readonly="true" id="idProfile" value="<?php echo $profile->key; ?>">
 
-                 <div data-role="fieldcontain">
+                <div data-role="fieldcontain">
                     <label for="checkbox-empresa">Sou uma empresa</label>
                     <input type="checkbox" id="checkbox-empresa" data-role="flipswitch" name="empresa" <?php echo $profile->push ? "checked" : ""; ?>>
                 </div>
