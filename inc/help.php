@@ -4,7 +4,7 @@
     <h2 class="whiteOne subtit_landind">Tem uma dúvida do funcionamento de nosso APP? <br> Tire suas dúvidas abaixo.</h2>
 </div>
 <div  class="barra_up">
-    <img src="./assets/images/Cinza11.svg" style="width: 100%"/>
+    <img src="./assets/images/Cinza11_1.svg" style="width: 100%"/>
 </div>
 <div class="landindPage_carac">
     <div id="newsletterform" class="noSpace" >

@@ -185,6 +185,7 @@
 </div>
 
 <div class="landindPage_lead1" >
+    <img src="./assets/images/Cinza11_2.svg" style="width: 100%"/>
     <center>
         <img src="./assets/images/email2.png"/>
         <h1  class="whiteOne">
