@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Citywatch.com.br [Pré lançamento] - Seu guia de bolso geolocalizado</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * { box-sizing: border-box; }
+            .video-background {
+                background: #000;
+                position: fixed;
+                top: 0; right: 0; bottom: 0; left: 0;
+                z-index: -99;
+            }
+            .video-foreground,
+            .video-background iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+            #vidtop-content {
+                top: 0px;
+                left:25%;
+                color: #fff;
+            }
+            .vid-info { border-radius: 25px;position: absolute; top: 0px; left: 35%; width: 30%; height: 32vh; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
+            .vid-info h1 { font-size: 2rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
+            .vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
+            @media (min-aspect-ratio: 16/9) {
+                .video-foreground { height: 300%; top: -100%; }
+            }
+            @media (max-aspect-ratio: 16/9) {
+                .video-foreground { width: 300%; left: -100%; }
+            }
+            @media all and (max-width: 600px) {
+                .vid-info { width: 100%; padding: .5rem;left: 0; }
+                .vid-info h1 { margin-bottom: .2rem; }
+            }
+            @media all and (max-width: 500px) {
+                .vid-info .acronym { display: none; }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="video-background">
+            <div class="video-foreground">
+                <iframe src="https://www.youtube.com/embed/FmRzvyr3AAs?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=FmRzvyr3AAs" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="vidtop-content">
+            <div class="vid-info" align="center">
+                <img src="v1/assets/images/logo.png" width="120"/>
+                <h2>PRÉ-LANÇAMENTO!</h2>
+
+                <h5>CITY WATCH É UM GUIA VIRTUAL PARA O COMPARTILHAMENTO <br>DE SUAS EXPERIÊNCIAS PELAS CIDADES!</h5>
+                <div style="font-size: 9px">Prepare-se para o lançamento do APP que vai revolucionar suas experiências em 2017. Cadastre seu email e participe!
+                    <BR style="margin-bottom: 10px">
+                    <script src="//inbound.citywatch.com.br/focus/4.js" type="text/javascript" charset="utf-8" async="async"></script>
+                    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.citywatch.com.br%2F&width=157&layout=button_count&action=like&show_faces=true&share=true&height=46&appId" width="157" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                </div> 
+                <div style="left: 0;position: relative;text-align: center; bottom: 2; width: 120px;">
+                    <a href="http://morettic.com.br" target="_blank">
+                        <img src="http://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" width="100"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

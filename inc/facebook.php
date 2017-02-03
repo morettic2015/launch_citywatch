@@ -93,6 +93,9 @@ if (isset($session)) {
                                 <a href="../">Voltar</a>
                             </li>
                         </ul>
+                        <script>
+                            this.location.href = 'https://www.citywatch.com.br/v1/?p=filter';
+                        </script>
                     </div>
                 </div>
                 <div data-role="footer">

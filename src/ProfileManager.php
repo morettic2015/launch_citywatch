@@ -27,6 +27,24 @@ class ProfileManager {
         return json_decode($jsonRet);
     }
 
+    public static final function whatsGoingOn() {
+        $geoLocation = ProfileManager::getJsonFromLatLon();
+        $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=16&city=" . urlencode($geoLocation->city);
+        
+        $ch = curl_init();
+        
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, $url);
+
+        $result = curl_exec($ch);
+        
+        curl_close($ch);
+       
+
+        return json_decode($result);
+    }
+
     public static final function getGeoLocationsFromProfile($city, $type, $distance, $lat, $lon, $id) {
         $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=6&id=$id&lat=$lat&lon=$lon&d=$distance&type=$type&myCity=" . urlencode(ProfileManager::stripAcentos($city));
         $jsonRet = file_get_contents($url);
@@ -172,6 +190,7 @@ class ProfileManager {
 
     public static final function navigate($url) {
         $pg = empty($url) ? "main" : $url;
+        //$pg = $pg=='filter'? "main" : $pg;
         include_once './inc/' . $pg . ".php";
     }
 
@@ -467,6 +486,8 @@ class ProfileManager {
         } else if ($token == "TRANSPORTE") {
             $path = "./assets/images/transporte.png";
         } else if ($token == "INFRAESTRUTURA") {
+            $path = "./assets/images/infraestrutura.png";
+        } else if ($token == "POLITICA") {
             $path = "./assets/images/infraestrutura.png";
         } else if ($token == "MEIO_AMBIENTE") {
             $path = "./assets/images/meio_ambiente_2.png";

@@ -40,6 +40,9 @@ if (isset($_SESSION['profile'])) {
                                 <a href="../../">Voltar</a>
                             </li>
                         </ul>
+                        <script>
+                            this.location.href = 'https://www.citywatch.com.br/v1/?p=filter';
+                        </script>
                     </div>
                 </div>
                 <div data-role="footer">
@@ -131,9 +134,9 @@ if (isset($_SESSION['profile'])) {
                     <div role="main" >
 
                         <h2>
-        <?php
-        echo $_SESSION['google_data']['name'];
-        ?> agora você faz parte da nossa comunidade!<br>Nas próximas horas estaremos encaminhando um email para você!
+                            <?php
+                            echo $_SESSION['google_data']['name'];
+                            ?> agora você faz parte da nossa comunidade!<br>Nas próximas horas estaremos encaminhando um email para você!
                         </h2>
                         Lembre-se de assistir nosso videos, compartilhar com seus amigos e baixar o APP!
                         <div data-role="navbar">
@@ -142,6 +145,9 @@ if (isset($_SESSION['profile'])) {
                                     <a href="../../">Voltar</a>
                                 </li>
                             </ul>
+                            <script>
+                                this.location.href = 'https://www.citywatch.com.br/v1/?p=filter';
+                            </script>
                         </div>
                     </div>
                     <div data-role="footer">
@@ -189,9 +195,9 @@ if (isset($_SESSION['profile'])) {
                         <div data-role="navbar" class="whiteOne">
                             <ul>
                                 <li>
-        <?php
-        echo '<a href="' . $authUrl . '"><img src="images/glogin.png" alt=""/></a>';
-        ?> 
+                                    <?php
+                                    echo '<a href="' . $authUrl . '"><img src="images/glogin.png" alt=""/></a>';
+                                    ?> 
                                 </li>
 
                             </ul>
@@ -208,6 +214,6 @@ if (isset($_SESSION['profile'])) {
                 </div>
             </body>
         </html>    
-    <?
+        <?
     }
 }?>

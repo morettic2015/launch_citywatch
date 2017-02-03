@@ -83,15 +83,21 @@ if (isset($_SESSION['profile'])) {
         $avatar = $userInfo->profile_image_url;
         //$femail=$userInfo->name;
 
+        $exists = ProfileManager::iDoExist($femail);
+        if (isset($exists->email)) {
+            ProfileManager::setProfileSession($exists, "FACEBOOK");
+            $_SESSION['profile'] = $exists;
+        } else {
 
-        ProfileManager::saveToList($femail); //Save to mail list
-        $imagePk = ProfileManager::getImageTokenPkFacebook($avatar, false);
-        //$fbirthday = empty($graphObject->getProperty('birthday')) ? "dd/mm/yyyy" : $graphObject->getProperty('birthday');
-        $jsonProfile = ProfileManager::saveUpdateProfile($femail, $imagePk, $fbfullname, "000.000.000-00", "00000000", "$femail", "n/a", "true", "dd/mm/yyyy", -1);
-        //header('Location: ./twitter.php');
-        ProfileManager::setProfileSession($jsonProfile, "TWITTER");
-        //die();
-        $_SESSION['profile'] = $jsonProfile;
+            ProfileManager::saveToList($femail); //Save to mail list
+            $imagePk = ProfileManager::getImageTokenPkFacebook($avatar, false);
+            //$fbirthday = empty($graphObject->getProperty('birthday')) ? "dd/mm/yyyy" : $graphObject->getProperty('birthday');
+            $jsonProfile = ProfileManager::saveUpdateProfile($femail, $imagePk, $fbfullname, "000.000.000-00", "00000000", "$femail", "n/a", "true", "dd/mm/yyyy", -1);
+            //header('Location: ./twitter.php');
+            ProfileManager::setProfileSession($jsonProfile, "TWITTER");
+            //die();
+            $_SESSION['profile'] = $jsonProfile;
+        }
     }
 }
 ?>
@@ -119,7 +125,7 @@ if (isset($_SESSION['profile'])) {
             <div role="main" >
 
                 <h2>
-<?php echo $userInfo->name; ?> agora você faz parte da nossa comunidade!<br>Nas próximas horas estaremos encaminhando um email para você!
+                    <?php echo $userInfo->name; ?> agora você faz parte da nossa comunidade!<br>Nas próximas horas estaremos encaminhando um email para você!
                 </h2>
                 Lembre-se de assistir nosso videos, compartilhar com seus amigos e baixar o APP!
                 <div data-role="navbar">
@@ -128,6 +134,9 @@ if (isset($_SESSION['profile'])) {
                             <a href="../">Voltar</a>
                         </li>
                     </ul>
+                    <script>
+                        this.location.href = 'https://www.citywatch.com.br/v1/?p=filter';
+                    </script>
                 </div>
             </div>
             <div data-role="footer">
