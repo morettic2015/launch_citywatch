@@ -88,7 +88,11 @@ class ProfileManager {
     }
 
     public static final function updateConfig(&$object, $key, $types) {
+        //echo "<pre>";
         //var_dump($object);
+        
+        $bussiness = empty($object['checkbox-empresa']?false:true);
+        
         $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=31";
         $url.= '&idProfile=' . $key;
         $url.= '&nrDoc=' . urlencode($object['rg']);
@@ -102,6 +106,7 @@ class ProfileManager {
         $url.= '&cell=' . urlencode($object['cell']);
         $url.= '&sex=' . urlencode($object['sexo']);
         $url.= '&rua=' . urlencode($object['rua']);
+        $url.= '&bussiness=' . $bussiness;
 
         $prop = "&props=";
         $canais = $object['canais'];
@@ -113,6 +118,8 @@ class ProfileManager {
 
         $url .= $prop;
 
+        
+        //echo $url;die;
         $jsonRet = file_get_contents($url);
 
         // var_dump($jsonRet);

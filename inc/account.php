@@ -14,7 +14,7 @@ if (!empty($_POST)) {
     $profile = ProfileManager::iDoExist($email);
 }
 $hashMap = array();
-//var_dump($profile->config);
+//var_dump($profile);
 $conf = $profile->config;
 if (!empty($profile->config)) {
 
@@ -66,7 +66,7 @@ if (!empty($profile->config)) {
 
                     <div data-role="fieldcontain">
                         <label for="checkbox-empresa">Sou uma empresa</label>
-                        <input type="checkbox" id="checkbox-empresa" data-role="flipswitch" name="empresa" <?php echo $profile->push ? "checked" : ""; ?>>
+                        <input type="checkbox" id="checkbox-empresa" data-role="flipswitch" name="checkbox-empresa" <?php echo (!empty($hashMap['IS_A_BUSSINESS'])) ? "checked" : ""; ?>>
                     </div>
                     <div data-role="fieldcontain">
                         <label for="rg">Nr.Documento:</label>
