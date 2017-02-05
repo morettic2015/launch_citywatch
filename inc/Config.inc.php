@@ -20,8 +20,8 @@
  */
         const clientId = '811880962924-pfh922tqssdmckdgn7ahat1s2qvq1qdg.apps.googleusercontent.com'; //Google CLIENT ID
         const clientSecret = 'LHk9sYNz3oC03zZnh1k-3h5W'; //Google CLIENT dex.phpSECRET
-        const redirectUrl = 'http://citywatch.com.br/v1/src/google/index.php';  //return url (url to script)
-        const homeUrl = 'http://citywatch.com.br/v1/src/google/index.php';  //return to home
+        const redirectUrl = 'https://www.citywatch.com.br/v1/src/google/index.php';  //return url (url to script)
+        const homeUrl = 'https://www.citywatch.com.br/v1/src/google/index.php';  //return to home
 
 //$config = parse_ini_file(PATH . 'src/database.ini');
 ?>

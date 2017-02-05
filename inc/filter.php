@@ -22,7 +22,7 @@ $tpList = ProfileManager::typeList();
         <!--    </div> -->
         <div data-role="fieldcontain" data-theme="d">
             <fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
-                <select name="canais[]" id="canais[]" multiple="multiple" >
+                <select name="canais[]" id="canais[]" multiple="multiple">
                     <?php
                     $email = strtoupper(ProfileManager::getEmail1());
                     $p1 = ProfileManager::iDoExist($email);

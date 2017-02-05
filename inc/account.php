@@ -1,28 +1,17 @@
 <?php
-//echo '<pre>';
 $email = strtoupper(ProfileManager::getEmail1());
-//echo $email;
-//var_dump($email);
 $profile = ProfileManager::iDoExist($email);
-//var_dump($profile);
-//var_dump($_SESSION);
-
-
-
 if (!empty($_POST)) {
     ProfileManager::updateConfig($_POST, $profile->key, $profile->types);
     $profile = ProfileManager::iDoExist($email);
 }
 $hashMap = array();
-//var_dump($profile);
 $conf = $profile->config;
 if (!empty($profile->config)) {
-
     foreach ($conf as $post) {
         $hashMap[$post] = $post;
     }
 }
-//var_dump($profile);
 ?>
 <div class="landindPage_tit">
     <img src="./assets/images/profile.svg" class="ico_landind"/>
@@ -34,10 +23,11 @@ if (!empty($profile->config)) {
     <img src="./assets/images/Cinza11_1.svg" style="width: 100%"/>
 </div>
 <div class="landindPage_carac">
-    <div id="newsletterform" data-theme="f">
 
+    <div id="newsletterform" data-theme="f">
+        <div id="ctrErro" class="alertRed"></div>
         <div data-role="popup" id="chatWindow" data-position-to="window" data-transition="turn"><p>Seus dados foram atualizados com sucesso.</p></div>
-        <form method="POST" action="index.php?p=account" data-ajax="false" style="margin-bottom: 150px">
+        <form method="POST" name="frmAccount" id="frmAccount" action="index.php?p=account" data-ajax="false" style="margin-bottom: 150px">
             <?php
             /**
              * Sucess message
@@ -54,9 +44,9 @@ if (!empty($profile->config)) {
             <div data-role="tabs"  data-theme="b">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#fragment-1" data-icon="user" class="ui-btn-active ui-icon-comment">Dados pessoais</a></li>
-                        <li><a href="#fragment-2" data-icon="navigation" class="ui-icon-comment">Endereço</a></li>
-                        <li><a href="#fragment-3" data-icon="tag" class="ui-icon-comment">Preferências</a></li>
+                        <li><a href="#fragment-1" id="tabDados" data-icon="user" class="ui-btn-active ui-icon-comment" data-theme="c">Dados pessoais</a></li>
+                        <li><a href="#fragment-2" id="tabEndereco" data-icon="navigation" class="ui-icon-comment" data-theme="d">Endereço</a></li>
+                        <li><a href="#fragment-3" id="tabConfig" data-icon="tag" class="ui-icon-comment" data-theme="e">Preferências</a></li>
 
                     </ul>
                 </div>
@@ -68,9 +58,9 @@ if (!empty($profile->config)) {
                         <label for="checkbox-empresa">Sou uma empresa</label>
                         <input type="checkbox" id="checkbox-empresa" data-role="flipswitch" name="checkbox-empresa" <?php echo (!empty($hashMap['IS_A_BUSSINESS'])) ? "checked" : ""; ?>>
                     </div>
-                    <div data-role="fieldcontain">
+                    <div data-role="fieldcontain" >
                         <label for="rg">Nr.Documento:</label>
-                        <input type="text" name="rg" id="rg"  placeholder="xxx.yyy.iii-xx" data-mini="true"  value="<?php echo $profile->cpfCnpj; ?>">
+                        <input type="text" name="rg" id="rg"  placeholder="xxx.yyy.iii-xx" data-mini="true"  value="<?php echo $profile->cpfCnpj; ?>" >
                     </div>
                     <div data-role="fieldcontain">
                         <label for="cell">Celular:</label>
@@ -153,32 +143,10 @@ if (!empty($profile->config)) {
 
 
             <div data-role="controlgroup" data-type="horizontal" data-mini="true" align="right">
-                <input type="submit" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-a" data-theme="g" value="Salvar">
+                <a href="javascript:submitForm()" data-rel="popup" class="ui-shadow ui-btn ui-corner-all ui-btn-g" data-theme="g" >Salvar</a>
                 <input type="reset" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" data-theme="f"  value="Cancelar">
             </div>
         </form>
-        <script>
-            function getData(elemento) {
-                $.getJSON("./src/postalcode.php?code=" + elemento.value, function (data) {
-                    console.log(data);
-                    $('#cidade').val(data.city);
-                    $('#pais').val(data.country);
-                    $('#complemento').val(data.state);
-                    $('#bairro').val(data.bairro);
-                });
-
-                //showData.text('Loading the JSON file.');
-            }
-            $("#bairro").attr('required', true);
-            $("#cidade").attr('required', true);
-            $("#cep").attr('required', true);
-            $("#complemento").attr('required', true);
-            $("#rua").attr('required', true);
-            $("#pais").attr('required', true);
-            $("#cell").attr('required', true);
-            $("#rg").attr('required', true);
-            $("#nasc").attr('required', true);
-            $("#sexo").attr('required', true);
-        </script>
+        <script src="./assets/js/account.js"></script>
     </div>
 </div>

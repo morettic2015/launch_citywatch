@@ -4,13 +4,16 @@
     <div id="newsletterform" class="noSpace" >
         <center >
             <!-- <h1  class="whiteOne" style="margin-top: 200px;">CITY WATCH</h1> -->
-            <h1  class="whiteOne" style="margin-bottom: 200px;margin-top: 200px;font-size: 40px">COMPARTILHANDO EXPERIÊNCIAS<br>PELAS CIDADES! </h1>
+            <h1  class="whiteOne homeBigTit">COMPARTILHANDO EXPERIÊNCIAS<br>PELAS CIDADES! </h1>
         </center>
     </div>
     <img src="./assets/images/Preto12.svg" style="width: 100%"/>
 </div>
 <div class="landindPage_video">
     <div id="newsletterform" class="noSpace" >
+        
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.citywatch.com.br%2F&width=192&layout=button_count&action=like&size=large&show_faces=false&share=true&height=46&appId=291386861194854" width="192" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>   
+
         <div class="columnsContainer" >
 
             <div class="leftColumn">
@@ -19,8 +22,9 @@
             </div>
 
             <div class="rightColumn">
-                <iframe class="youtubeMaster" src="https://www.youtube.com/embed/FmRzvyr3AAs?controls=1&showinfo=0&rel=0&autoplay=1&loop=0" frameborder="0" allowfullscreen>
-                </iframe>
+                <div class="video-container">
+                    <iframe class="youtubeMaster" src="https://www.youtube.com/embed/FmRzvyr3AAs?controls=1&showinfo=0&rel=0&autoplay=1&loop=0" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
 
         </div>
@@ -64,33 +68,33 @@
     <img src="./assets/images/Cinza_claro12.svg" style="width: 100%"/>
 </div>
 <div class="landindPage_who">
+    <div id="newsletterform" class="noSpace" >
+        <center>
+            <img src="./assets/images/share.png"/>
+        </center>
+        <h1  class="whiteOne" style="text-align:center">
+            COMPARTILHE
+        </h1>
+        <div class="columnsContainer">
 
-    <center>
-        <img src="./assets/images/share.png"/>
-    </center>
-    <h1  class="whiteOne" style="text-align:center">
-        COMPARTILHE
-    </h1>
-    <div class="columnsContainer">
+            <div class="leftColumn" >
+                <img src="./assets/images/Empresas.png"/>
+                <div>
+                    <h2  class="whiteOne">Empresas</h2>
+                    <p  class="whiteOne">Quer promover seus produtos e serviços de forma geolocalizada? E se você pudesse saber mais sobre os consumidores (turistas e cidadãos) que estão próximos ao seu estabelecimento? E se você pudesse se comunicar com esse público?</p>
+                </div>
+            </div>
 
-        <div class="leftColumn" style="width:  45%;text-align:center">
-            <img src="./assets/images/Empresas.png"/>
-            <div>
-                <h2  class="whiteOne">Empresas</h2>
-                <p  class="whiteOne">Quer promover seus produtos e serviços de forma geolocalizada? E se você pudesse saber mais sobre os consumidores (turistas e cidadãos) que estão próximos ao seu estabelecimento? E se você pudesse se comunicar com esse público?</p>
+            <div class="rightColumn" >
+                <img src="./assets/images/Pessoas.png"/>
+                <div>
+                    <h2 class="whiteOne">Pessoas</h2>
+                    <p class="whiteOne" >Ja precisou de um borracheiro no domingo ou feriado? Fique por dentro dos seus pontos de interesse na cidade. Receba novidades dos estabelecimentos de sua preferência e receba promoções quando você estiver por perto.</p>
+                </div>
             </div>
         </div>
-
-        <div class="rightColumn" style="width: 45%;text-align:center">
-            <img src="./assets/images/Pessoas.png"/>
-            <div>
-                <h2 class="whiteOne">Pessoas</h2>
-                <p class="whiteOne" >Ja precisou de um borracheiro no domingo ou feriado? Fique por dentro dos seus pontos de interesse na cidade. Receba novidades dos estabelecimentos de sua preferência e receba promoções quando você estiver por perto.</p>
-            </div>
-        </div>
+        <div id="response"></div>
     </div>
-    <div id="response"></div>
-
 </div>
 <div  class="barra_up">
     <img src="./assets/images/Cinza_claro11.svg" style="width: 100%"/>

@@ -28,7 +28,7 @@ if (isset($_SESSION['profile'])) {
 // request token of application
         $request_token = $twitteroauth->oauth(
                 'oauth/request_token', [
-            'oauth_callback' => 'http://citywatch.com.br/v1/inc/twitter.php'
+            'oauth_callback' => 'https://citywatch.com.br/v1/inc/twitter.php'
                 ]
         );
 

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
     <head>
@@ -32,7 +31,7 @@
             <?php $profile->showPanelOrNot(); ?>
             <div data-role="header" data-vertical-centred  data-theme="a"  data-position="fixed" data-fullscreen="true">
                 <?php $profile->btMenu(); ?> 
-                <img src="assets/images/logo.png" height="65" class="ui-btn-icon-left" />
+                <img src="assets/images/logo.png" class="ui-btn-icon-left logoCw" />
                 <?php if (!$profile->looged()) { ?>
                     <a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-right ui-icon-lock ui-btn-icon-right">Minha conta</a>
                     <div data-role="popup" id="popupMenu" data-theme="g">
@@ -56,27 +55,19 @@
 
             <div role="main" class="ui-content noSpace">
                 <?php
-                
                 echo $pg;
-                $pg = ($_GET['p']=="filter")?"main":$_GET['p'];
-                $profile->navigate($pg); //echo $vContent;   ?>
+                $pg = ($_GET['p'] == "filter") ? "main" : $_GET['p'];
+                $profile->navigate($pg); //echo $vContent;   
+                ?>
                 <p style="margin-bottom: 50px">
             </div><!-- /content -->
             <div data-role="footer"   data-position="fixed" data-fullscreen="true" align="right">
                 <a href="#myPanel" data-role="button" class="ui-btn-left" > 
                     <img class="wrap" src="assets/images/download.png" height="30" border="0">
                 </a>
-                <!--  <a data-ajax="false">
-                      Compartilhe<br>
-                     <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.citywatch.com.br%2F&width=157&layout=button_count&action=like&show_faces=true&share=false&height=46&appId" width="157" height="46" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-                 </a> -->
-
-                Copyright:
-                <!--  <a href="http://genimo.com.br" target="_blank"  data-theme="b" >GENIMO</a> -->
                 <a data-ajax="false" href="http://morettic.com.br" target="_blank">
-                    <img class="wrap" src="https://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" height="30" border="0">
+                    <img alt="Copyright 2017 www.morettic.com.br" title="Copyright 2017 www.morettic.com.br" class="wrap" src="https://morettic.com.br/wp2/wp-content/uploads/2014/10/morettic3.png" height="30" border="0">
                 </a>
-                <a class="ui-btn ui-btn-center">beta 0.9 </a>
             </div>
             <!-- /footer -->
         </div>

@@ -39,6 +39,41 @@
 
 }
 
+.homeBigTit {
+    margin-bottom: 200px;margin-top: 200px;font-size: 40px
+}
+
+@media all and (max-width: 599px) and (min-width: 120px) {
+    .homeBigTit {
+        margin-bottom: 200px;margin-top: 200px;font-size: 28px
+    }
+    .youtubeMaster{
+        width: 180px;
+        border: 2px activeborder;
+        margin: 5px;
+    }
+    .video-container {
+        position:relative;
+        padding-bottom:56.25%;
+        padding-top:30px;
+        height:0;
+        overflow:hidden;
+    }
+    .video-container iframe, .video-container object, .video-container embed {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+    }
+    .logoCw{
+        height: 40px;
+    }
+}
+.logoCw{
+    max-height: 65px;
+}
+
 #newsletterform  {
     font-family: 'Raleway', sans-serif;
     font-size: 16px;

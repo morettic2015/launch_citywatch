@@ -24,7 +24,7 @@ FacebookSession::setDefaultApplication(FACE_APP_ID, FACE_APP_TOKEN);
 
 // login helper with redirect_uri
 
-$helper = new FacebookRedirectLoginHelper('http://citywatch.com.br/v1/inc/facebook.php');
+$helper = new FacebookRedirectLoginHelper('https://citywatch.com.br/v1/inc/facebook.php');
 $permissions = ['email', 'public_profile'];
 try {
     $session = $helper->getSessionFromRedirect();
@@ -179,7 +179,7 @@ if (isset($session)) {
     </html>  
     <?php
 } else {
-    $helper = new FacebookRedirectLoginHelper('http://citywatch.com.br/v1/inc/facebook.php');
+    $helper = new FacebookRedirectLoginHelper('https://citywatch.com.br/v1/inc/facebook.php');
     $permissions = ['email', 'public_profile', 'user_friends', 'user_hometown', 'user_birthday']; // optional
     ?>
     <!doctype html>

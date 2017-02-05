@@ -12,7 +12,7 @@ $p1 = ProfileManager::iDoExist($email);
         <p><?php ProfileManager::getEmail(); ?></p>
          <div data-role="fieldcontain">
              <label for="checkbox-alerta"><small>Alertas</small></label>
-            <input type="checkbox" id="checkbox-alerta" data-role="flipswitch" data-mini="true" name="checkbox-alerta"  <?php echo $p1->push ? "checked" : ""; ?>>
+            <input type="checkbox" data-theme="g" id="checkbox-alerta" data-role="flipswitch" data-mini="true" name="checkbox-alerta"  <?php echo $p1->push ? "checked" : ""; ?>>
         </div>
 
         <div data-role="collapsible" data-collapsed="false" data-inset="false" data-iconpos="left" data-theme="a" data-content-theme="a">
