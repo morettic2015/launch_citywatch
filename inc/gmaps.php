@@ -39,8 +39,8 @@ foreach ($vet as $objeto) {
 
 $jsonRet = ProfileManager::getGeoLocationsFromProfile($city, $selecao, $range, $lat, $lon, $id);
 //echo "<pre>";
-//var_dump($jsonRet);
-//var_dump($_POST);
+//var_dump($jsonRet->airbnb);
+//die(); //var_dump($_POST);
 ?>
 <script>
     var map;
@@ -64,12 +64,37 @@ $jsonRet = ProfileManager::getGeoLocationsFromProfile($city, $selecao, $range, $
                     map = new google.maps.Map(document.getElementById('map_canvas'),
                             mapOptions);
 <?php
+$i = 99;
+if (!empty($jsonRet->airbnb)) {
+    $vetOpenStreet = $jsonRet->airbnb;
+    //var_dump($vetOpenStreet);
+    //die();
+    foreach ($vetOpenStreet as $objeto) {
+        ?> try {
+                            var marker<?php echo $i; ?> = new google.maps.Marker({
+                            position: new google.maps.LatLng(<?php echo $objeto->lat; ?>, <?php echo $objeto->lon; ?>),
+                                    map: map,
+                                    icon: '<?php echo ProfileManager::getImagePathFromToken($objeto->tipo); ?>',
+                                    title: '<?php echo str_replace("'", "´", $objeto->tit); ?>'
+                            });
+                                    var contentString<?php echo $i; ?> = '<div id="content" align="center"><img src="<?php echo $objeto->token; ?>" style="border-radius: 50%;;max-width:96px" /><h1><?php echo $objeto->tit ?></h1><?php echo $objeto->desc ?><br><?php echo $objeto->tipo; ?><br><?php echo $objeto->date; ?><br>Author:<?php echo $objeto->host; ?><br><img src="<?php echo $objeto->host_avatar; ?>" width="90" height="90"/></div>';
+                                    var infowindow<?php echo $i; ?> = new google.maps.InfoWindow({
+                                    content: contentString<?php echo $i; ?>
+                                    });
+                                    google.maps.event.addListener(marker<?php echo $i; ?>, 'click', function () {
+                                    infowindow<?php echo $i; ?>.open(map, marker<?php echo $i; ?>);
+                                    });
+                            } catch (e) {
+                    alert(e);
+                    }
+        <?php
+        $i++;
+    }
+}
 if (!empty($jsonRet->openStreet)) {
     $vetOpenStreet = $jsonRet->openStreet;
-//print_r($vetOpenStreet);die();
     $profile = $jsonRet->profiles;
-    $dataStore = $jsonRet->rList;
-    $i = 0;
+
     foreach ($vetOpenStreet as $objeto) {
         $indice = rand(0, 4);
         $img = ($objeto->token == "default") ? "https://www.citywatch.com.br/v1/assets/images/Openstreet-01.png" : $objeto->token;

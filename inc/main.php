@@ -11,8 +11,8 @@
 </div>
 <div class="landindPage_video">
     <div id="newsletterform" class="noSpace" >
-        
-        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.citywatch.com.br%2F&width=192&layout=button_count&action=like&size=large&show_faces=false&share=true&height=46&appId=291386861194854" width="192" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>   
+
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.citywatch.com.br%2F&width=192&layout=button_count&action=like&size=large&show_faces=false&share=true&height=46&appId=291386861194854" width="192" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 
         <div class="columnsContainer" >
 
@@ -163,7 +163,7 @@
             <img class="wrap" src="assets/images/Openstreet-01.png" height="48" border="0">
         </a>
         <div data-role="popup" id="popupOpenstreet">
-            <p>Openstreetmap fornece dados complementares para as diversas categorias do APP</p>
+            <p><h1>Openstreetmap</h1> <h3>fornece dados complementares para as diversas categorias do APP</h3></p>
         </div>
         <a href="#popupMaps" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">
             <img class="wrap" src="assets/images/Maps.svg" height="48" border="0">
@@ -181,7 +181,13 @@
             <img class="wrap" src="assets/images/Genimo.svg" height="48" border="0">
         </a>
         <div data-role="popup" id="popupGenimo">
-            <p>Genimo é um sistema de gestão imobiliária oferecendo um imóvel perto de você</p>
+            <p><h1>Genimo</h1> <h3>é um sistema de gestão imobiliária oferecendo um imóvel perto de você</h3></p>
+        </div>
+        <a href="#popupAirbnb" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">
+            <img class="wrap" src="assets/images/Airbnb.svg" height="48" border="0">
+        </a>
+        <div data-role="popup" id="popupAirbnb">
+            <p><center><h1>Novidade!</h1> <br><h3>(BETA) Pesquise por imóveis e verá os alugueis do Airbnb!</h3></center></p>
         </div>
     </div>
     <div id="response"></div>

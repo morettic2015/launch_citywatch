@@ -6,7 +6,7 @@
 
  * Profile manager
  * @Connect to the webservice from gae to create ACC
- * 
+ *
  *  */
         const local_directory = '../dir/';
 
@@ -30,17 +30,17 @@ class ProfileManager {
     public static final function whatsGoingOn() {
         $geoLocation = ProfileManager::getJsonFromLatLon();
         $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=16&city=" . urlencode($geoLocation->city);
-        
+
         $ch = curl_init();
-        
+
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_URL, $url);
 
         $result = curl_exec($ch);
-        
+
         curl_close($ch);
-       
+
 
         return json_decode($result);
     }
@@ -90,9 +90,9 @@ class ProfileManager {
     public static final function updateConfig(&$object, $key, $types) {
         //echo "<pre>";
         //var_dump($object);
-        
-        $bussiness = empty($object['checkbox-empresa']?false:true);
-        
+
+        $bussiness = empty($object['checkbox-empresa'] ? false : true);
+
         $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=31";
         $url.= '&idProfile=' . $key;
         $url.= '&nrDoc=' . urlencode($object['rg']);
@@ -118,7 +118,7 @@ class ProfileManager {
 
         $url .= $prop;
 
-        
+
         //echo $url;die;
         $jsonRet = file_get_contents($url);
 
@@ -419,7 +419,7 @@ class ProfileManager {
       array(2) { ["status"]=> string(5) "error" ["message"]=> string(19) "Email existente...." } Copied Profile Picturestring(272) "{"uploadPath":"http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGchFlf1pbdD8jWDPI343s0l2X_312K9hI0dY_KsxIG0le7Md-uFy8dbqb9FLsSsKZ-rpLLYYxsVs6ocp0QAvuWFeMmWx2X_csLTj9N5qkrVLhm3Mif9_bqqn9FsTVR0vo2g/ALBNUaYAAAAAWCZbRr5vd44_xUTqYqdU9r5z0NcSsrAM/"}"
       Warning: fopen(../dir/avatar.jpg): failed to open stream: No such file or directory in /home/citywatch/www/v1/src/ProfileManager.php on line 136
       http://gaeloginendpoint.appspot.com/_ah/upload/AMmfu6bXvTzu5V9qfVOmgEzL0LEywWFGchFlf1pbdD8jWDPI343s0l2X_312K9hI0dY_KsxIG0le7Md-uFy8dbqb9FLsSsKZ-rpLLYYxsVs6ocp0QAvuWFeMmWx2X_csLTj9N5qkrVLhm3Mif9_bqqn9FsTVR0vo2g/ALBNUaYAAAAAWCZbRr5vd44_xUTqYqdU9r5z0NcSsrAM/IMAGE PK__==5133583953952768
-     * 
+     *
      *  */
     public static final function loadImageKey($imagePath, $redirec = false) {
         $upload = "http://gaeloginendpoint.appspot.com/upload.exec";
@@ -512,6 +512,8 @@ class ProfileManager {
             $path = "./assets/images/alimentacao.png";
         } else if ($token == "IMOVEIS") {
             $path = "./assets/images/imoveis.png";
+        } else if ($token == "AIRBNB") {
+            $path = "./assets/images/Airbnb.svg";
         }
 
 
