@@ -30,7 +30,7 @@
         <div data-role="page">
             <?php $profile->showPanelOrNot(); ?>
             <div data-role="header" data-vertical-centred  data-theme="a"  data-position="fixed" data-fullscreen="true">
-                <?php $profile->btMenu(); ?> 
+                <?php $profile->btMenu(); ?>
                 <img src="assets/images/logo.png" class="ui-btn-icon-left logoCw" />
                 <?php if (!$profile->looged()) { ?>
                     <a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-right ui-icon-lock ui-btn-icon-right">Minha conta</a>
@@ -57,12 +57,12 @@
                 <?php
                 echo $pg;
                 $pg = ($_GET['p'] == "filter") ? "main" : $_GET['p'];
-                $profile->navigate($pg); //echo $vContent;   
+                $profile->navigate($pg); //echo $vContent;
                 ?>
                 <p style="margin-bottom: 50px">
             </div><!-- /content -->
             <div data-role="footer"   data-position="fixed" data-fullscreen="true" align="right">
-                <a href="#myPanel" data-role="button" class="ui-btn-left" > 
+                <a href="#myPanel" data-role="button" class="ui-btn-left" >
                     <img class="wrap" src="assets/images/download.png" height="30" border="0">
                 </a>
                 <a data-ajax="false" href="http://morettic.com.br" target="_blank">

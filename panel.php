@@ -1,4 +1,4 @@
-<?php 
+<?php
 $email = strtoupper(ProfileManager::getEmail1());
 //echo $email;
 //var_dump($email);
@@ -10,10 +10,10 @@ $p1 = ProfileManager::iDoExist($email);
         <h1><img width="96" height="96" style="border-radius: 50%;" src="<?php ProfileManager::getAvatar(); ?>"/></h1>
         <h2><?php ProfileManager::getName(); ?></h2>
         <p><?php ProfileManager::getEmail(); ?></p>
-         <div data-role="fieldcontain">
+        <!-- <div data-role="fieldcontain">
              <label for="checkbox-alerta"><small>Alertas</small></label>
-            <input type="checkbox" data-theme="g" id="checkbox-alerta" data-role="flipswitch" data-mini="true" name="checkbox-alerta"  <?php echo $p1->push ? "checked" : ""; ?>>
-        </div>
+             <input type="checkbox" data-theme="g" id="checkbox-alerta" data-role="flipswitch" data-mini="true" name="checkbox-alerta"  <?php echo $p1->push ? "checked" : ""; ?>>
+         </div> -->
 
         <div data-role="collapsible" data-collapsed="false" data-inset="false" data-iconpos="left" data-theme="a" data-content-theme="a">
             <h3>Opções</h3>
@@ -27,7 +27,7 @@ $p1 = ProfileManager::iDoExist($email);
                         <!-- <li><a href="./?p=news">Na sua cidade</a></li> -->
                         <!--<li><a href="./?p=news">Novidades na sua área</a></li> -->
                         <!-- <li><a href="./?p=fav">Favoritos</a></li>
-                         <li><a href="#">Top 50</a></li> --> 
+                         <li><a href="#">Top 50</a></li> -->
 
                         <!--    <li><a href="#">Compartilhar</a></li> -->
                     </ul>
@@ -74,7 +74,7 @@ $p1 = ProfileManager::iDoExist($email);
                         <li><a  href="index.php?p=eula">Termo de uso</a></li>
                     </ul>
                 </div><!-- /collapsible -->
-                <div data-role="collapsible" data-content-theme="b"  data-collapsed-icon="power" data-iconpos="left"> 
+                <div data-role="collapsible" data-content-theme="b"  data-collapsed-icon="power" data-iconpos="left">
                     <h3>Sair</h3>
                     <ul data-role="listview" data-iconpos="left">
                         <li><a href="index.php?p=logout">Fechar sessão</a></li>
@@ -82,5 +82,5 @@ $p1 = ProfileManager::iDoExist($email);
                 </div><!-- /collapsible -->
             </div><!-- /collapsible-set -->
         </div><!-- /collapsible -->
-      
+
 </div>

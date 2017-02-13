@@ -12,6 +12,7 @@
 //($city, $type, $distance, $lat, $lon, $id)
 //var_dump($_POST);die();
 /* @var $_POST type */
+
 $city = $_POST['city'];
 $lat = $_POST['lat'];
 $lon = $_POST['lon'];
@@ -22,15 +23,19 @@ $id = $_POST['idProfile'];
 $selecao = "";
 $range*=20;
 //echo $range;
-if (isset($_POST['canais'])) {
-    try {
-        foreach ($canais as $objeto) {
-            $selecao.=$objeto . ",";
-        }
-    } catch (Exception $e) {
-        $selecao = $_POST['canais'] . ',';
+//var_dump($_POST);
+
+$tpList = ProfileManager::typeList();
+$vet = $tpList->types;
+//var_dump($vet);
+foreach ($vet as $objeto) {
+    if (!empty($_POST[$objeto])) {
+        $selecao.= $objeto . ',';
     }
 }
+//echo "aaaaaaa";
+//echo $selecao;
+//die();
 
 $jsonRet = ProfileManager::getGeoLocationsFromProfile($city, $selecao, $range, $lat, $lon, $id);
 //echo "<pre>";
@@ -67,6 +72,7 @@ if (!empty($jsonRet->openStreet)) {
     $i = 0;
     foreach ($vetOpenStreet as $objeto) {
         $indice = rand(0, 4);
+        $img = ($objeto->token == "default") ? "https://www.citywatch.com.br/v1/assets/images/Openstreet-01.png" : $objeto->token;
         ?>
 
                     var marker<?php echo $i; ?> = new google.maps.Marker({
@@ -76,7 +82,7 @@ if (!empty($jsonRet->openStreet)) {
                             title: '<?php str_replace("'", "´", $objeto->tit); ?>'
                     });
                             try {
-                            var contentString<?php echo $i; ?> = '<div id="content"><h1><?php echo str_replace("'", "´", $objeto->tit); ?></h1><img style="border-radius: 50%;max-width:96px" src="<?php echo $objeto->token; ?>"/><?php echo str_replace("'", "´", $objeto->desc); ?><br><?php echo str_replace("'", "´", $objeto->address); ?><br><?php echo $objeto->date; ?><br>Author:<?php echo $profile[$indice]->email; ?><br><img src="<?php
+                            var contentString<?php echo $i; ?> = '<div id="content"><h1><?php echo str_replace("'", "´", $objeto->tit); ?></h1><img style="border-radius: 50%;max-width:96px" src="<?php echo $img; ?>"/><?php echo str_replace("'", "´", $objeto->desc); ?><br><?php echo str_replace("'", "´", $objeto->address); ?><br><?php echo $objeto->date; ?><br>Author:<?php echo $profile[$indice]->email; ?><br><img src="<?php
         echo $profile[$indice]->avatar;
         ;
         ?>"/></div>';
@@ -95,7 +101,11 @@ if (!empty($jsonRet->openStreet)) {
 }
 if (!empty($jsonRet->iList)) {
     $vetOpenStreet = $jsonRet->iList;
+    //var_dump($vetOpenStreet);
+    //die();
     foreach ($vetOpenStreet as $objeto) {
+        $pic = str_replace("HTTP://www.genimo.com.br", "https://genimo.com.br", $objeto->nmPicture);
+        $logo = str_replace("HTTP://www.genimo.com.br", "https://genimo.com.br", $objeto->dsCompanyLogo);
         ?> try {
                     var marker<?php echo $i; ?> = new google.maps.Marker({
                     position: new google.maps.LatLng(<?php echo $objeto->vlLatitude; ?>, <?php echo $objeto->vlLongitude; ?>),
@@ -103,8 +113,8 @@ if (!empty($jsonRet->iList)) {
                             icon: './assets/images/imoveis.png',
                             title: '<?php echo str_replace("'", "´", $objeto->nmCategory); ?>'
                     });
-                            var contentString<?php echo $i; ?> = '<div id="content" align="center"><img src="<?php echo $objeto->nmPicture; ?>" style="border-radius: 50%;;max-width:96px" /><h1><?php echo $objeto->nmCategory; ?></h1><?php echo $objeto->nmProperty; ?><br><?php echo str_replace("'", "´", $objeto->dsAddress); ?><br><?php echo $objeto->date; ?><br>Corretora:<?php echo $objeto->nmCompany; ?><br><img src="<?php
-        echo $objeto->dsCompanyLogo;
+                            var contentString<?php echo $i; ?> = '<div id="content" align="center"><img src="<?php echo $pic; ?>" style="border-radius: 50%;;max-width:120px" /><h1><?php echo $objeto->nmCategory; ?></h1><?php echo $objeto->nmProperty; ?><br><?php echo str_replace("'", "´", $objeto->dsAddress); ?><br><?php echo $objeto->date; ?><br>Corretora:<?php echo $objeto->nmCompany; ?><br><img src="<?php
+        echo $logo;
         ?>"/><a class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-star ui-btn-c">Favoritos</a></div>';
                             var infowindow<?php echo $i; ?> = new google.maps.InfoWindow({
                             content: contentString<?php echo $i; ?>

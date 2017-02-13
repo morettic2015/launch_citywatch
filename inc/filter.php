@@ -22,27 +22,30 @@ $tpList = ProfileManager::typeList();
         <!--    </div> -->
         <div data-role="fieldcontain" data-theme="d">
             <fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
-                <select name="canais[]" id="canais[]" multiple="multiple">
-                    <?php
-                    $email = strtoupper(ProfileManager::getEmail1());
-                    $p1 = ProfileManager::iDoExist($email);
-                    $conf = $p1->config;
-                    $hashMap = array();
-                    if (!empty($p1->config)) {
+               <!-- <select style="visibility: hidden;display: none" name="canais[]" id="canais[]" multiple="multiple"> -->
+                <?php
+                $email = strtoupper(ProfileManager::getEmail1());
+                $p1 = ProfileManager::iDoExist($email);
+                $conf = $p1->config;
+                $hashMap = array();
+                if (!empty($p1->config)) {
 
-                        foreach ($conf as $post) {
-                            $hashMap[$post] = $post;
-                        }
+                    foreach ($conf as $post) {
+                        $hashMap[$post] = $post;
                     }
-                    $vet = $tpList->types;
-                    foreach ($vet as $objeto) {
-                        $selected = isset($hashMap[$objeto]) ? "selected" : "";
-                        ?>
-                        <option  <?php echo @$selected; ?> value="<?php echo @$objeto ?>"><?php echo @$objeto; ?></option>
-                        <?php
-                    }
+                }
+                $vet = $tpList->types;
+                foreach ($vet as $objeto) {
+                    $selected = isset($hashMap[$objeto]) ? "checked" : "";
                     ?>
-                </select>
+                    <label>
+                        <input type="checkbox" <?php echo @$selected; ?> value="<?php echo @$objeto ?>" id="<?php echo @$objeto ?>" name="<?php echo @$objeto ?>">
+                        <?php echo @$objeto; ?>
+                    </label>
+                    <?php
+                }
+                ?>
+                <!--</select>-->
             </fieldset>
         </div>
         <div data-role="fieldcontain">
