@@ -1,8 +1,16 @@
 <?php
-$result = ProfileManager::whatsGoingOn();
-//var_dump($result);
+$geoLocation = ProfileManager::getJsonFromLatLon();
+var_dump($geoLocation);
+$param = urlencode($geoLocation->city);
+$url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=16&city=$param";
+echo $url;
+//
+$jsonRet = file_get_contents($url);
+$listNow = json_decode($jsonRet);
+var_dump($listNow);
+die();
 ?>
-<div class="landindPage_lead1"><?php echo $geoLocation->city; ?> 
+<div class="landindPage_lead1"><?php echo $geoLocation->city; ?>
     <img src="./assets/images/search.svg" class="ico_landind"/>
     <h1 class="whiteOne tit_landind">Novidades</h1>
     <h2 class="whiteOne subtit_landind">Veja as novidades da rede perto de você</h2>
@@ -15,11 +23,11 @@ $result = ProfileManager::whatsGoingOn();
 
 
         <!-- http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=32&id=5660531612450816 -->
-        <h1>Sua localização aproximada é: <?php echo $_SESSION['location']->city.','.$_SESSION['location']->country; ?></h1>
+        <h1>Sua localização aproximada é: <?php echo $_SESSION['location']->city . ',' . $_SESSION['location']->country; ?></h1>
 
         <?php
-        $twitterList = $result->tList;
-        if (!empty($result->tList)) {
+        $twitterList = $listNow->tList;
+        if (!empty($listNow->tList)) {
             echo "<h1>Twitter news</h1>";
             echo '<ul data-role="listview" data-inset="true">';
             foreach ($twitterList as $objeto) {
@@ -35,8 +43,8 @@ $result = ProfileManager::whatsGoingOn();
             }
             echo "</ul>";
         }
-        $twitterList = $result->wList;
-        if (!empty($result->tList)) {
+        $twitterList = $listNow->wList;
+        if (!empty($listNow->wList)) {
             echo "<h1>Webhose.io news</h1>";
             echo '<ul data-role="listview" data-inset="true" data-theme="d">';
             foreach ($twitterList as $objeto) {
@@ -54,6 +62,6 @@ $result = ProfileManager::whatsGoingOn();
             echo "</ul>";
         }
         ?>
-       
+
     </div>
 </div>

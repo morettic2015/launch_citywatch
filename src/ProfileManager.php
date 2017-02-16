@@ -30,19 +30,11 @@ class ProfileManager {
     public static final function whatsGoingOn() {
         $geoLocation = ProfileManager::getJsonFromLatLon();
         $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=16&city=" . urlencode($geoLocation->city);
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, $url);
-
-        $result = curl_exec($ch);
-
-        curl_close($ch);
-
-
-        return json_decode($result);
+        $jsonRet = file_get_contents($url);
+        /* echo $url;
+          die(); */
+        //var_dump($jsonRet);
+        return json_decode($jsonRet);
     }
 
     public static final function getGeoLocationsFromProfile($city, $type, $distance, $lat, $lon, $id) {
