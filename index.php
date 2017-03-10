@@ -62,7 +62,7 @@
                 <p style="margin-bottom: 50px">
             </div><!-- /content -->
             <div data-role="footer"   data-position="fixed" data-fullscreen="true" align="right">
-                <a href="#myPanel" data-role="button" class="ui-btn-left" >
+                <a href="https://play.google.com/store/apps/details?id=view.infoseg.morettic.com.br.infosegapp" target="_blank" data-role="button" class="ui-btn-left" >
                     <img class="wrap" src="assets/images/download.png" height="30" border="0">
                 </a>
                 <a data-ajax="false" href="http://morettic.com.br" target="_blank">

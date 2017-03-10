@@ -3,12 +3,13 @@ $geoLocation = ProfileManager::getJsonFromLatLon();
 var_dump($geoLocation);
 $param = urlencode($geoLocation->city);
 $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=16&city=$param";
-echo $url;
+//echo $url;
 //
+//echo "<pre>";
 $jsonRet = file_get_contents($url);
 $listNow = json_decode($jsonRet);
-var_dump($listNow);
-die();
+//var_dump($listNow);
+//die();
 ?>
 <div class="landindPage_lead1"><?php echo $geoLocation->city; ?>
     <img src="./assets/images/search.svg" class="ico_landind"/>
@@ -36,6 +37,7 @@ die();
                     <a href="#">
                         <h2><? echo $objeto->twitter_user; ?></h2>
                         <p><? echo $objeto->text; ?></p>
+                        <p><img src="<? echo $objeto->avatar_url; ?>" style="clip-path: rect(10px, 20px, 30px, 40px);width:60px;"/></p>
                         <p class="ui-li-aside"><? echo $objeto->created_at; ?></p>
                     </a>
                 </li>
@@ -43,16 +45,17 @@ die();
             }
             echo "</ul>";
         }
-        $twitterList = $listNow->wList;
-        if (!empty($listNow->wList)) {
-            echo "<h1>Webhose.io news</h1>";
+        $twitterList = $listNow->rList;
+        if (!empty($listNow->rList)) {
+            echo "<h1>Citywatch news</h1>";
             echo '<ul data-role="listview" data-inset="true" data-theme="d">';
             foreach ($twitterList as $objeto) {
                 ?>
                 <li>
                     <a href="#">
-                        <h2><? echo $objeto->title; ?></h2>
-                        <p><? echo $objeto->text; ?></p>
+                        <h2><? echo $objeto->tit; ?></h2>
+                        <p><? echo $objeto->desc; ?></p>
+                        <p><img src="<? echo $objeto->token; ?>" style="clip-path: rect(10px, 20px, 30px, 40px);width:60px;"/></p>
                         <p>Author: <? echo $objeto->author; ?></p>
                         <p><? echo $objeto->date; ?></p>
                     </a>

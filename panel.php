@@ -23,8 +23,9 @@ $p1 = ProfileManager::iDoExist($email);
                     <ul data-role="listview" data-iconpos="left">
                         <li><a data-rel="popup" data-transition="slideup" href="#popupSrc">Pesquisar</a></li>
                         <li><a href="./?p=mine">Minhas experiências</a></li>
+                        <li><a href="./?p=news">Na sua cidade</a></li>
                         <li><a href="./?p=experience">Compartilhar experiência</a></li>
-                        <!--<li><a href="./?p=news">Na sua cidade</a></li> -->
+
                         <!--<li><a href="./?p=news">Novidades na sua área</a></li> -->
                         <!-- <li><a href="./?p=fav">Favoritos</a></li>
                          <li><a href="#">Top 50</a></li> -->
