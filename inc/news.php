@@ -1,6 +1,6 @@
 <?php
 $geoLocation = ProfileManager::getJsonFromLatLon();
-var_dump($geoLocation);
+//var_dump($geoLocation);
 $param = urlencode($geoLocation->city);
 $url = "http://gaeloginendpoint.appspot.com/infosegcontroller.exec?action=16&city=$param";
 //echo $url;
